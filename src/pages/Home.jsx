@@ -174,6 +174,16 @@ function Home() {
                   )}
                 </div>
               )}
+              <div className="mt-4">
+                <a
+                  href="/pdf/resume.pdf"
+                  download
+                  className={`inline-flex items-center gap-2 rounded border border-slate-600/60 px-3 py-1.5 text-sm font-medium ${theme.colors.textPrimary} hover:border-slate-400/80 hover:${theme.colors.accent} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300/70 transition-colors cursor-pointer`}
+                  aria-label="Download resume PDF"
+                >
+                  Download Resume
+                </a>
+              </div>
 
               {/* Dynamic Navigation - generated from sections array */}
               <nav
