@@ -1,17 +1,19 @@
 import { portfolio } from "../data/portfolio";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 
 function Home() {
   const [activeSection, setActiveSection] = useState(
     portfolio.sections[0]?.id || "about",
   );
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [emailCopied, setEmailCopied] = useState(false);
+  const copyTimeoutRef = useRef(null);
 
   const { metadata, theme, sections, config } = portfolio;
 
   // Mouse tracking for spotlight effect
   useEffect(() => {
-    if (!config.display.showSpotlight) return;
+    if (!config.spotlight.enabled) return;
 
     const handleMouseMove = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
@@ -19,7 +21,7 @@ function Home() {
 
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [config.display.showSpotlight]);
+  }, [config.spotlight.enabled]);
 
   // Intersection Observer for active section detection
   useEffect(() => {
@@ -67,12 +69,54 @@ function Home() {
     [config.smoothScroll],
   );
 
+  const handleCopyEmail = useCallback(async () => {
+    if (!metadata.email) return;
+
+    const showCopiedState = () => {
+      setEmailCopied(true);
+      if (copyTimeoutRef.current) {
+        clearTimeout(copyTimeoutRef.current);
+      }
+      copyTimeoutRef.current = setTimeout(() => {
+        setEmailCopied(false);
+      }, 2000);
+    };
+
+    try {
+      await navigator.clipboard.writeText(metadata.email);
+      showCopiedState();
+    } catch {
+      const textarea = document.createElement("textarea");
+      textarea.value = metadata.email;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "absolute";
+      textarea.style.left = "-9999px";
+      document.body.appendChild(textarea);
+      textarea.select();
+
+      try {
+        document.execCommand("copy");
+        showCopiedState();
+      } finally {
+        document.body.removeChild(textarea);
+      }
+    }
+  }, [metadata.email]);
+
+  useEffect(() => {
+    return () => {
+      if (copyTimeoutRef.current) {
+        clearTimeout(copyTimeoutRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div
       className={`min-h-screen ${theme.colors.background} ${theme.colors.text}`}
     >
       {/* Spotlight effect - dynamically controlled */}
-      {config.display.showSpotlight && (
+      {config.spotlight.enabled && (
         <div
           className="pointer-events-none fixed inset-0 z-30 transition duration-300 lg:absolute"
           style={{
@@ -99,6 +143,40 @@ function Home() {
                 {metadata.title}
               </h2>
               <p className="mt-4 max-w-xs leading-normal">{metadata.tagline}</p>
+              {metadata.email && (
+                <div className="mt-4 flex flex-wrap items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={handleCopyEmail}
+                    className={`inline-flex items-center gap-2 rounded border border-slate-600/60 px-3 py-1.5 text-sm font-medium ${theme.colors.textPrimary} hover:border-slate-400/80 hover:${theme.colors.accent} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300/70 transition-colors cursor-pointer`}
+                    aria-label={`Copy email ${metadata.email}`}
+                    title="Click to copy"
+                  >
+                    <span className="text-xs uppercase tracking-wide">
+                      Email
+                    </span>
+                    <span className="font-semibold">{metadata.email}</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      className="h-4 w-4"
+                      aria-hidden="true"
+                    >
+                      <path d="M7.5 4.5a3 3 0 013-3h4a3 3 0 013 3v6a3 3 0 01-3 3h-4a3 3 0 01-3-3v-6z" />
+                      <path d="M3 8a3 3 0 013-3h1.5v1.5H6a1.5 1.5 0 00-1.5 1.5v6A1.5 1.5 0 006 15.5h4A1.5 1.5 0 0011.5 14v-1.5H13V14a3 3 0 01-3 3H6a3 3 0 01-3-3V8z" />
+                    </svg>
+                  </button>
+                  {emailCopied && (
+                    <span
+                      className={`text-xs ${theme.colors.accent}`}
+                      aria-live="polite"
+                    >
+                      Copied!
+                    </span>
+                  )}
+                </div>
+              )}
 
               {/* Dynamic Navigation - generated from sections array */}
               <nav
@@ -197,11 +275,11 @@ function Home() {
                 id={section.id}
                 className={`${theme.spacing.sectionGap} scroll-mt-16 lg:scroll-mt-24`}
               >
-                {/* Section Header - only for mobile, hidden on lg */}
+                {/* Section Header - always visible */}
                 {config.display.showSectionHeaders && (
-                  <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
+                  <div className="sticky top-0 z-20 -mx-6 mb-8 w-[calc(100%+3rem)] bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:w-[calc(100%+6rem)] md:px-12 lg:mx-auto lg:w-full lg:px-0 lg:py-5 lg:mb-10">
                     <h2
-                      className={`${theme.typography.label} ${theme.colors.textPrimary} lg:sr-only`}
+                      className={`${theme.typography.label} ${theme.colors.textPrimary}`}
                     >
                       {section.title}
                     </h2>
@@ -229,7 +307,7 @@ function Home() {
                         >
                           <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
                             <div
-                              className={`absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:${theme.colors.hoverOverlay} lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg`}
+                              className={`absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block ${theme.colors.hoverOverlay} lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg`}
                             ></div>
                             <header
                               className={`z-10 mb-2 mt-1 ${theme.typography.label} ${theme.colors.textMuted} sm:col-span-2`}
@@ -326,7 +404,7 @@ function Home() {
                         >
                           <div className="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
                             <div
-                              className={`absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:${theme.colors.hoverOverlay} lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg`}
+                              className={`absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block ${theme.colors.hoverOverlay} lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg`}
                             ></div>
                             {project.image && (
                               <div className="z-10 sm:order-1 sm:col-span-2">
@@ -410,6 +488,113 @@ function Home() {
                                   </li>
                                 ))}
                               </ul>
+                            </div>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {section.type === "article" && (
+                  <div>
+                    <ul className="group/list">
+                      {section.items.map((article, index) => (
+                        <li
+                          key={`article-${index}`}
+                          className={theme.spacing.itemGap}
+                        >
+                          <div className="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                            <div
+                              className={`absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block ${theme.colors.hoverOverlay} lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg`}
+                            ></div>
+                            {article.image && (
+                              <div className="z-10 sm:order-1 sm:col-span-2">
+                                <img
+                                  alt={`${article.title} thumbnail`}
+                                  loading="lazy"
+                                  width="200"
+                                  height="120"
+                                  decoding="async"
+                                  className="rounded border-2 border-slate-200/10 transition group-hover:border-slate-200/30 sm:order-1 sm:col-span-2 sm:translate-y-1"
+                                  src={article.image}
+                                  onError={(e) => {
+                                    e.target.style.display = "none";
+                                  }}
+                                />
+                              </div>
+                            )}
+                            <div
+                              className={`z-10 sm:order-2 ${article.image ? "sm:col-span-6" : "sm:col-span-8"}`}
+                            >
+                              <h3
+                                className={`font-medium leading-snug ${theme.colors.textPrimary}`}
+                              >
+                                {article.url ? (
+                                  <a
+                                    className={`inline-flex items-baseline font-medium leading-tight ${theme.colors.textPrimary} hover:${theme.colors.accent} focus-visible:${theme.colors.accent} group/link text-base`}
+                                    href={article.url}
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                    aria-label={`${article.title} (opens in a new tab)`}
+                                  >
+                                    <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
+                                    <span>
+                                      {article.title}
+                                      <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20"
+                                        fill="currentColor"
+                                        className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px"
+                                        aria-hidden="true"
+                                      >
+                                        <path
+                                          fillRule="evenodd"
+                                          d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
+                                          clipRule="evenodd"
+                                        />
+                                      </svg>
+                                    </span>
+                                  </a>
+                                ) : (
+                                  <span className="text-base">
+                                    {article.title}
+                                  </span>
+                                )}
+                              </h3>
+                              {article.date && (
+                                <p
+                                  className={`mt-1 text-xs ${theme.colors.textMuted}`}
+                                >
+                                  {article.date}
+                                </p>
+                              )}
+                              {article.summary && (
+                                <p
+                                  className={`${theme.spacing.contentGap} text-sm leading-normal`}
+                                >
+                                  {article.summary}
+                                </p>
+                              )}
+                              {article.tags && article.tags.length > 0 && (
+                                <ul
+                                  className={`${theme.spacing.contentGap} flex flex-wrap`}
+                                  aria-label="Article tags"
+                                >
+                                  {article.tags.map((tag, tagIndex) => (
+                                    <li
+                                      key={`${article.title}-tag-${tagIndex}`}
+                                      className="mr-1.5 mt-2"
+                                    >
+                                      <div
+                                        className={`flex items-center rounded-full ${theme.colors.accentBg} px-3 py-1 text-xs font-medium leading-5 ${theme.colors.accent}`}
+                                      >
+                                        {tag}
+                                      </div>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
                             </div>
                           </div>
                         </li>

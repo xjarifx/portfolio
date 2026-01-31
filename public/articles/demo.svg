@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="480" viewBox="0 0 800 480" role="img" aria-label="Article thumbnail">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="480" fill="url(#bg)" />
+  <rect x="70" y="70" width="660" height="340" rx="18" fill="#0b1220" stroke="#334155" stroke-width="2" />
+  <rect x="120" y="130" width="480" height="18" rx="9" fill="#1f2937" />
+  <rect x="120" y="165" width="520" height="12" rx="6" fill="#1f2937" />
+  <rect x="120" y="190" width="420" height="12" rx="6" fill="#1f2937" />
+  <rect x="120" y="230" width="140" height="120" rx="10" fill="#111827" stroke="#334155" />
+  <rect x="280" y="230" width="140" height="120" rx="10" fill="#111827" stroke="#334155" />
+  <rect x="440" y="230" width="140" height="120" rx="10" fill="#111827" stroke="#334155" />
+  <text x="120" y="110" fill="#cbd5f5" font-family="Arial, sans-serif" font-size="18">Demo Article Thumbnail</text>
+</svg>

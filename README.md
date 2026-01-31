@@ -1,40 +1,28 @@
-# Backend Developer Portfolio
+# Backend Developer Portfolio (Data-Driven)
 
-A clean, minimalistic portfolio website built with React, Vite, Tailwind CSS, and React Router.
+A clean, minimalistic portfolio website built with React, Vite, Tailwind CSS, and React Router. The entire frontend is driven by a single data file, so you never need to touch component code when updating content.
 
-## Features
+## Key Concept
 
-- **Multi-page routing** with React Router
-- **Responsive design** with Tailwind CSS
-- **5 main pages**: Home, About, Projects, Skills, Contact
-- **Reusable components**: Navbar, Footer, ProjectCard
-- **Professional UI** with neutral color palette
-- **No backend dependencies** - pure frontend application
+Single source of truth: all content, structure, and UI behavior is defined in src/data/portfolio.js. The UI renders dynamically from that file.
 
 ## Tech Stack
 
-- **React** - UI library
-- **Vite** - Build tool and dev server
-- **Tailwind CSS** - Utility-first CSS framework
-- **React Router** - Client-side routing
+- React
+- Vite
+- Tailwind CSS
+- React Router
 
-## Project Structure
+## Project Structure (Core)
 
 ```
 portfolio/
 ├── src/
-│   ├── components/
-│   │   ├── Navbar.jsx
-│   │   ├── Footer.jsx
-│   │   └── ProjectCard.jsx
+│   ├── data/
+│   │   └── portfolio.js
 │   ├── pages/
-│   │   ├── Home.jsx
-│   │   ├── About.jsx
-│   │   ├── Projects.jsx
-│   │   ├── Skills.jsx
-│   │   └── Contact.jsx
+│   │   └── Home.jsx
 │   ├── App.jsx
-│   ├── App.css
 │   ├── index.css
 │   └── main.jsx
 ├── tailwind.config.js
@@ -51,71 +39,119 @@ portfolio/
 
 ### Installation
 
-1. Clone the repository or navigate to the project directory
-2. Install dependencies:
-
 ```bash
 npm install
 ```
 
 ### Development
 
-Start the development server:
-
 ```bash
 npm run dev
 ```
 
-The site will be available at `http://localhost:5173/`
-
 ### Build for Production
-
-Create an optimized production build:
 
 ```bash
 npm run build
 ```
 
-Preview the production build:
-
 ```bash
 npm run preview
 ```
 
-## Customization
+## Data-Driven Configuration Guide
 
-### Personal Information
+All updates happen in src/data/portfolio.js.
 
-Update the following files with your information:
+### Architecture
 
-- **src/pages/Home.jsx** - Update headline, description, and social links
-- **src/pages/About.jsx** - Add your introduction and background
-- **src/pages/Projects.jsx** - Replace with your actual projects
-- **src/pages/Skills.jsx** - Update with your skills
-- **src/pages/Contact.jsx** - Add your contact information
-- **src/components/Footer.jsx** - Update social links
+- metadata: personal information and social links
+- theme: design tokens (Tailwind classes)
+- sections: ordered list of sections to render
+- config: UI behavior settings (spotlight, smooth scroll, observer)
 
-### Colors
+### Updating Personal Info
 
-Modify colors in `tailwind.config.js`:
+- Edit metadata.name, metadata.title, metadata.tagline
+- Update social links in metadata.social
 
-```javascript
-colors: {
-  primary: '#1a1a1a',
-  secondary: '#404040',
-  accent: '#666666',
-  light: '#f5f5f5',
+### Adding a New Experience Entry
+
+Add an object to sections[id="experience"].items:
+
+```
+{
+  period: "2025 — PRESENT",
+  title: "Senior Developer",
+  company: "Company Name",
+  companyUrl: "https://...",
+  description: "...",
+  achievements: ["...", "..."],
+  technologies: ["Tech1", "Tech2"]
 }
 ```
 
-### Fonts
+### Adding a New Project
 
-Update fonts in `tailwind.config.js` and add Google Fonts in `index.html` if needed.
+Add an object to sections[id="projects"].items (same shape as existing projects):
 
-## License
+```
+{
+  title: "Project Name",
+  description: "...",
+  highlights: ["..."],
+  techStack: ["Tech1", "Tech2"],
+  githubUrl: "https://...",
+  image: "/projects/example.png"
+}
+```
 
-This project is open source and available for personal and commercial use.
+### Removing a Section
 
-## Contact
+Delete the section object from the sections array. Navigation updates automatically.
 
-Feel free to reach out for collaborations or opportunities!
+### Changing Theme
+
+- Update theme.colors values (Tailwind classes)
+- Update theme.typography or theme.spacing as needed
+
+Example:
+
+```
+theme: {
+  colors: {
+    background: "bg-gray-900",
+    textPrimary: "text-gray-100"
+  }
+}
+```
+
+### Changing Layout
+
+- Update config.layout.maxWidth
+- Adjust spacing in theme.spacing
+
+### Toggling Features
+
+- Disable spotlight: config.spotlight.enabled = false
+- Disable smooth scroll: config.smoothScroll.enabled = false
+- Hide social links: config.display.showSocialLinks = false
+
+## Section Types Reference
+
+TYPE: text
+
+- content: array of paragraphs
+- renders as simple text blocks
+
+TYPE: experience
+
+- items: array of jobs (period, title, company, description, achievements, technologies)
+- renders as timeline cards
+
+TYPE: project
+
+- items: array of projects (title, description, highlights, techStack, githubUrl, image)
+- renders as project cards
+
+Note: If you add new section types, the renderer in Home.jsx must be extended to support them.
