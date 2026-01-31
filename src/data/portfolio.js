@@ -84,7 +84,20 @@ export const portfolio = {
             "Key feature or achievement #3",
           ],
           techStack: ["Node.js", "Express", "PostgreSQL"],
-          githubUrl: "https://github.com/yourusername/your-project",
+          links: [
+            {
+              label: "GitHub",
+              url: "https://github.com/yourusername/your-project",
+            },
+            {
+              label: "Live Demo",
+              url: "https://your-project-demo.com",
+            },
+            {
+              label: "Postman",
+              url: "https://www.postman.com/collections/your-collection-id",
+            },
+          ],
           image: "/projects/demo.svg",
         },
       ],

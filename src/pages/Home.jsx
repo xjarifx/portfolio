@@ -434,32 +434,10 @@ function Home() {
                             <div
                               className={`z-10 sm:order-2 ${project.image ? "sm:col-span-6" : "sm:col-span-8"}`}
                             >
-                              <h3>
-                                <a
-                                  className={`inline-flex items-baseline font-medium leading-tight ${theme.colors.textPrimary} hover:${theme.colors.accent} focus-visible:${theme.colors.accent} group/link text-base`}
-                                  href={project.githubUrl}
-                                  target="_blank"
-                                  rel="noreferrer noopener"
-                                  aria-label={`${project.title} (opens in a new tab)`}
-                                >
-                                  <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
-                                  <span>
-                                    {project.title}
-                                    <svg
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      viewBox="0 0 20 20"
-                                      fill="currentColor"
-                                      className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px"
-                                      aria-hidden="true"
-                                    >
-                                      <path
-                                        fillRule="evenodd"
-                                        d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
-                                        clipRule="evenodd"
-                                      />
-                                    </svg>
-                                  </span>
-                                </a>
+                              <h3
+                                className={`font-medium leading-tight ${theme.colors.textPrimary} text-base`}
+                              >
+                                {project.title}
                               </h3>
                               <p
                                 className={`${theme.spacing.contentGap} text-sm leading-normal`}
@@ -480,6 +458,36 @@ function Home() {
                                     )}
                                   </ul>
                                 )}
+                              {project.links && project.links.length > 0 && (
+                                <div
+                                  className={`${theme.spacing.contentGap} flex flex-wrap gap-2`}
+                                >
+                                  {project.links.map((link, linkIndex) => (
+                                    <a
+                                      key={`${project.title}-link-${linkIndex}`}
+                                      className={`inline-flex items-center gap-1 rounded border border-slate-600/60 px-2.5 py-1 text-xs font-medium ${theme.colors.textPrimary} hover:border-slate-400/80 hover:${theme.colors.accent} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300/70 transition-colors`}
+                                      href={link.url}
+                                      target="_blank"
+                                      rel="noreferrer noopener"
+                                    >
+                                      {link.label}
+                                      <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20"
+                                        fill="currentColor"
+                                        className="h-3.5 w-3.5"
+                                        aria-hidden="true"
+                                      >
+                                        <path
+                                          fillRule="evenodd"
+                                          d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
+                                          clipRule="evenodd"
+                                        />
+                                      </svg>
+                                    </a>
+                                  ))}
+                                </div>
+                              )}
                               <ul
                                 className={`${theme.spacing.contentGap} flex flex-wrap`}
                                 aria-label="Technologies used"
