@@ -118,7 +118,7 @@ function Home() {
       {/* Spotlight effect - dynamically controlled */}
       {config.spotlight.enabled && (
         <div
-          className="pointer-events-none fixed inset-0 z-30 transition duration-300 lg:absolute"
+          className="pointer-events-none fixed inset-0 z-30 transition duration-300"
           style={{
             background: `radial-gradient(${config.spotlight.size} at ${mousePosition.x}px ${mousePosition.y}px, ${config.spotlight.color}, transparent 80%)`,
           }}
@@ -152,9 +152,6 @@ function Home() {
                     aria-label={`Copy email ${metadata.email}`}
                     title="Click to copy"
                   >
-                    <span className="text-xs uppercase tracking-wide">
-                      Email
-                    </span>
                     <span className="font-semibold">{metadata.email}</span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
