@@ -262,6 +262,18 @@ function Home() {
                   )}
                 </ul>
               )}
+            <p className={`mt-4 text-xs ${theme.colors.textMuted}`}>
+              Design inspired by{" "}
+              <a
+                className={`font-medium ${theme.colors.textPrimary} hover:${theme.colors.accent} transition-colors`}
+                href="https://brittanychiang.com"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                Brittany Chiang
+              </a>
+              .
+            </p>
           </header>
 
           {/* Right Content - Dynamic Sections */}
