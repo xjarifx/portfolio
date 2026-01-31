@@ -1,7 +1,7 @@
 import { personalInfo } from "../data/personalInfo";
 import { experience } from "../data/experience";
 import { projects } from "../data/projects";
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 function Home() {
   const [activeSection, setActiveSection] = useState("about");
