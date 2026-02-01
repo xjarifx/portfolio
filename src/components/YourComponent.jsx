@@ -1,3 +1,12 @@
-<a href="/pdf/resume.pdf" download class="btn btn-primary">
-  Download Resume
-</a>;
+/**
+ * Custom component template
+ * Add your own components here
+ */
+
+export const YourComponent = (
+  {
+    /* props */
+  },
+) => {
+  return <div>{/* Your component JSX */}</div>;
+};
