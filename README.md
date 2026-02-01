@@ -1,157 +1,184 @@
-# Backend Developer Portfolio (Data-Driven)
+# Backend Developer Portfolio
 
-A clean, minimalistic portfolio website built with React, Vite, Tailwind CSS, and React Router. The entire frontend is driven by a single data file, so you never need to touch component code when updating content.
-
-## Key Concept
-
-Single source of truth: all content, structure, and UI behavior is defined in src/data/portfolio.js. The UI renders dynamically from that file.
+A professional portfolio website built with React, Vite, and Tailwind CSS. Clean component architecture with data-driven content management.
 
 ## Tech Stack
 
-- React
+- React 18+
 - Vite
 - Tailwind CSS
-- React Router
+- Custom Hooks
 
-## Project Structure (Core)
+## Project Structure
 
 ```
-portfolio/
-├── src/
-│   ├── data/
-│   │   └── portfolio.js
-│   ├── pages/
-│   │   └── Home.jsx
-│   ├── App.jsx
-│   ├── index.css
-│   └── main.jsx
-├── tailwind.config.js
-├── postcss.config.js
-└── package.json
+src/
+├── hooks/                    # Data & interaction logic
+│   ├── usePortfolioData.js   # Extract data from portfolio.js
+│   ├── useEmailCopy.js       # Email clipboard
+│   └── useInteractions.js    # Mouse tracking, scroll, observers
+│
+├── components/
+│   ├── ui/                   # Reusable UI components
+│   │   ├── Button.jsx
+│   │   ├── Badge.jsx
+│   │   ├── ExternalLink.jsx
+│   │   └── SectionHeader.jsx
+│   │
+│   ├── sections/             # Content-specific components
+│   │   ├── TextSection.jsx
+│   │   ├── ExperienceSection.jsx
+│   │   ├── ProjectSection.jsx
+│   │   └── ArticleSection.jsx
+│   │
+│   └── layout/               # Page layout components
+│       ├── Header.jsx
+│       ├── MainContent.jsx
+│       └── Spotlight.jsx
+│
+├── pages/
+│   └── Home.jsx              # Main entry point
+│
+└── data/
+    └── portfolio.js          # Single data source
 ```
 
-## Getting Started
-
-### Prerequisites
-
-- Node.js (v16 or higher)
-- npm or yarn
-
-### Installation
+## Quick Start
 
 ```bash
 npm install
+npm run dev        # Development server
+npm run build      # Production build
 ```
 
-### Development
+## How to Use
 
-```bash
-npm run dev
+### Add Content
+
+Edit `src/data/portfolio.js` - all content comes from here. Components automatically render your data.
+
+### Add New Component
+
+1. Create in `src/components/ui/`, `src/components/sections/`, or `src/components/layout/`
+2. Import and use in other components
+3. No data changes needed
+
+### Create a Custom Hook
+
+1. Create in `src/hooks/`
+2. Export from `hooks/index.js`
+3. Use in any component
+
+## Data Structure (`src/data/portfolio.js`)
+
+```javascript
+export const portfolio = {
+  // Your name, title, tagline, email, social links
+  metadata: { ... },
+
+  // Design tokens for styling
+  theme: { ... },
+
+  // Page sections (ordered list)
+  sections: [
+    { id: "about", type: "text", title: "About", content: [...] },
+    { id: "projects", type: "project", title: "Projects", items: [...] },
+    // ... more sections
+  ],
+
+  // UI behavior configuration
+  config: { ... }
+}
 ```
 
-### Build for Production
+### Section Types
 
-```bash
-npm run build
+**text** - Simple paragraphs
+
+```javascript
+{ id: "about", type: "text", title: "About", content: ["Paragraph 1", "Paragraph 2"] }
 ```
 
-```bash
-npm run preview
-```
+**experience** - Job/work history
 
-## Data-Driven Configuration Guide
-
-All updates happen in src/data/portfolio.js.
-
-### Architecture
-
-- metadata: personal information and social links
-- theme: design tokens (Tailwind classes)
-- sections: ordered list of sections to render
-- config: UI behavior settings (spotlight, smooth scroll, observer)
-
-### Updating Personal Info
-
-- Edit metadata.name, metadata.title, metadata.tagline
-- Update social links in metadata.social
-
-### Adding a New Experience Entry
-
-Add an object to sections[id="experience"].items:
-
-```
+```javascript
 {
-  period: "2025 — PRESENT",
-  title: "Senior Developer",
-  company: "Company Name",
-  companyUrl: "https://...",
-  description: "...",
-  achievements: ["...", "..."],
-  technologies: ["Tech1", "Tech2"]
+  id: "work", type: "experience", title: "Experience",
+  items: [
+    {
+      period: "2024 — Present",
+      title: "Role", company: "Company", companyUrl: "...",
+      description: "...", achievements: [...], technologies: [...]
+    }
+  ]
 }
 ```
 
-### Adding a New Project
+**project** - Portfolio projects
 
-Add an object to sections[id="projects"].items (same shape as existing projects):
-
-```
+```javascript
 {
-  title: "Project Name",
-  description: "...",
-  highlights: ["..."],
-  techStack: ["Tech1", "Tech2"],
-  githubUrl: "https://...",
-  image: "/projects/example.png"
+  id: "projects", type: "project", title: "Projects",
+  items: [
+    {
+      title: "Project Name", description: "...", highlights: [...],
+      techStack: [...], links: [{label: "GitHub", url: "..."}], image: "..."
+    }
+  ]
 }
 ```
 
-### Removing a Section
+**article** - Blog posts or articles
 
-Delete the section object from the sections array. Navigation updates automatically.
-
-### Changing Theme
-
-- Update theme.colors values (Tailwind classes)
-- Update theme.typography or theme.spacing as needed
-
-Example:
-
-```
-theme: {
-  colors: {
-    background: "bg-gray-900",
-    textPrimary: "text-gray-100"
-  }
+```javascript
+{
+  id: "articles", type: "article", title: "Articles",
+  items: [
+    {
+      title: "Article", summary: "...", date: "2024-01-15",
+      url: "...", tags: [...], image: "..."
+    }
+  ]
 }
 ```
 
-### Changing Layout
+## Component API
 
-- Update config.layout.maxWidth
-- Adjust spacing in theme.spacing
+### Hooks
 
-### Toggling Features
+```javascript
+import { usePortfolioData } from "./hooks";
+import { useEmailCopy } from "./hooks";
+import { useMouseTracking, useSmoothScroll, useActiveSection } from "./hooks";
+```
 
-- Disable spotlight: config.spotlight.enabled = false
-- Disable smooth scroll: config.smoothScroll.enabled = false
-- Hide social links: config.display.showSocialLinks = false
+### UI Components
 
-## Section Types Reference
+```javascript
+import { Button, Badge, ExternalLink, SectionHeader } from "./components/ui";
 
-TYPE: text
+<Button variant="default" size="md" onClick={...}>Click</Button>
+<Badge variant="accent">Tag</Badge>
+<ExternalLink href="..." label="...">Text</ExternalLink>
+<SectionHeader title="Section" theme={theme} show={true} />
+```
 
-- content: array of paragraphs
-- renders as simple text blocks
+## Key Features
 
-TYPE: experience
+✅ **Component-driven** - Reusable, testable components
+✅ **Data-driven** - Update content without touching code
+✅ **Custom hooks** - Logic extracted and reusable
+✅ **Responsive** - Mobile, tablet, desktop optimized
+✅ **Fast** - Built with Vite for instant reload
+✅ **Styled** - Tailwind CSS with custom theme
+✅ **Accessible** - ARIA labels, semantic HTML
+✅ **Optimized** - No dead code, clean codebase
 
-- items: array of jobs (period, title, company, description, achievements, technologies)
-- renders as timeline cards
+## Tips
 
-TYPE: project
-
-- items: array of projects (title, description, highlights, techStack, githubUrl, image)
-- renders as project cards
-
-Note: If you add new section types, the renderer in Home.jsx must be extended to support them.
+- Customize theme in `portfolio.js` → change design globally
+- Add new sections to `portfolio.js` → components render automatically
+- Reorder sections by moving them in the array
+- Disable features in `config.display` or `config.spotlight`
+- Keep component props simple and data-driven
+- Use theme tokens instead of hardcoded colors
