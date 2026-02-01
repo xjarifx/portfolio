@@ -4,6 +4,6 @@
  */
 
 export { TextSection } from "./TextSection";
-export { ExperienceSection } from "./ExperienceSection";
 export { ProjectSection } from "./ProjectSection";
 export { ArticleSection } from "./ArticleSection";
+export { CertificationSection } from "./CertificationSection";

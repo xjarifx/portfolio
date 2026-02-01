@@ -21,7 +21,13 @@ export const Header = ({
         <h1
           className={`${theme.typography.heading} ${theme.colors.textPrimary}`}
         >
-          {metadata.name}
+          <a
+            href="#about"
+            onClick={(e) => onNavClick(e, "about")}
+            className={`hover:${theme.colors.accent} transition-colors cursor-pointer`}
+          >
+            {metadata.name}
+          </a>
         </h1>
         <h2
           className={`mt-3 ${theme.typography.subheading} ${theme.colors.textPrimary}`}

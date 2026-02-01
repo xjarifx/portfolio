@@ -16,35 +16,6 @@ export const portfolio = {
   },
 
   // ============================================================
-  // THEME: Design tokens for styling
-  // ============================================================
-  // These are Tailwind class references - update here to change global look
-  // All components use these tokens, so one change updates everywhere
-  theme: {
-    colors: {
-      background: "bg-slate-900",
-      text: "text-slate-400",
-      textPrimary: "text-slate-200",
-      textMuted: "text-slate-500",
-      accent: "text-teal-300",
-      accentBg: "bg-teal-400/10",
-      line: "bg-slate-600",
-      lineActive: "bg-slate-200",
-      hoverOverlay: "lg:group-hover:bg-slate-800/50",
-    },
-    spacing: {
-      sectionGap: "lg:mb-36 md:mb-24 mb-16",
-      itemGap: "mb-12",
-      contentGap: "mt-2",
-    },
-    typography: {
-      heading: "text-4xl font-bold tracking-tight sm:text-5xl",
-      subheading: "text-lg font-medium tracking-tight sm:text-xl",
-      label: "text-xs font-bold uppercase tracking-widest",
-    },
-  },
-
-  // ============================================================
   // SECTIONS: Dynamically rendered content sections
   // ============================================================
   // Each section describes its type, title, and content
@@ -75,30 +46,70 @@ export const portfolio = {
       title: "Projects",
       items: [
         {
-          title: "Your Project Title",
+          title: "E-Commerce REST API",
           description:
-            "Short description of your project. Explain what it does and why it matters.",
+            "A robust RESTful API for an e-commerce platform with user authentication, product management, order processing, and payment integration.",
           highlights: [
-            "Key feature or achievement #1",
-            "Key feature or achievement #2",
-            "Key feature or achievement #3",
+            "Implemented JWT-based authentication with refresh token rotation",
+            "Optimized database queries reducing response time by 60%",
+            "Built comprehensive API documentation with Postman collections",
           ],
-          techStack: ["Node.js", "Express", "PostgreSQL"],
+          techStack: ["Node.js", "Express", "PostgreSQL", "Redis", "Stripe"],
           links: [
             {
               label: "GitHub",
-              url: "https://github.com/yourusername/your-project",
-            },
-            {
-              label: "Live Demo",
-              url: "https://your-project-demo.com",
+              url: "https://github.com/xjarifx/ecommerce-api",
             },
             {
               label: "Postman",
-              url: "https://www.postman.com/collections/your-collection-id",
+              url: "https://www.postman.com/collections/ecommerce-api",
             },
           ],
-          image: "/projects/demo.svg",
+          image: "/projects/ecommerce.svg",
+        },
+        {
+          title: "Task Management System",
+          description:
+            "A collaborative task management API with real-time updates, team workspaces, and advanced filtering capabilities.",
+          highlights: [
+            "Designed scalable database schema supporting multi-tenancy",
+            "Integrated WebSocket for real-time notifications",
+            "Implemented role-based access control (RBAC) system",
+          ],
+          techStack: ["Node.js", "Express", "MongoDB", "Socket.io", "Docker"],
+          links: [
+            {
+              label: "GitHub",
+              url: "https://github.com/xjarifx/task-manager-api",
+            },
+            {
+              label: "Live Demo",
+              url: "https://task-api-demo.herokuapp.com",
+            },
+          ],
+          image: "/projects/taskmanager.svg",
+        },
+        {
+          title: "Blog API with CMS",
+          description:
+            "A full-featured blogging platform API with content management, media handling, and SEO optimization features.",
+          highlights: [
+            "Built RESTful endpoints with pagination and filtering",
+            "Implemented file upload system with image optimization",
+            "Added full-text search using PostgreSQL",
+          ],
+          techStack: ["Node.js", "Express", "PostgreSQL", "AWS S3", "Jest"],
+          links: [
+            {
+              label: "GitHub",
+              url: "https://github.com/xjarifx/blog-api",
+            },
+            {
+              label: "API Docs",
+              url: "https://blog-api-docs.vercel.app",
+            },
+          ],
+          image: "/projects/blog.svg",
         },
       ],
     },
@@ -112,12 +123,109 @@ export const portfolio = {
       title: "Articles",
       items: [
         {
-          title: "Your Article Title",
-          summary: "Brief summary of the article and what readers will learn.",
-          date: "2026-02-01",
-          url: "https://your-article-link.com",
-          tags: ["Backend", "APIs"],
-          image: "/articles/demo.svg",
+          title: "Building Scalable REST APIs with Node.js and PostgreSQL",
+          summary:
+            "A comprehensive guide to designing and implementing production-ready REST APIs with proper error handling, validation, and database optimization techniques.",
+          date: "2026-01-15",
+          url: "https://dev.to/xjarifx/scalable-rest-apis",
+          tags: ["Node.js", "PostgreSQL", "API Design", "Backend"],
+          image: "/articles/rest-api.svg",
+        },
+        {
+          title: "Understanding JWT Authentication: Best Practices",
+          summary:
+            "Deep dive into JWT-based authentication, covering token storage, refresh token rotation, and security considerations for modern web applications.",
+          date: "2025-12-20",
+          url: "https://medium.com/@xjarifx/jwt-authentication",
+          tags: ["Security", "Authentication", "JWT", "Backend"],
+          image: "/articles/jwt.svg",
+        },
+        {
+          title: "Database Indexing Strategies for Better Performance",
+          summary:
+            "Learn how to optimize database queries using proper indexing strategies, with practical examples and performance benchmarks.",
+          date: "2025-11-10",
+          url: "https://hashnode.com/@xjarifx/database-indexing",
+          tags: ["Database", "PostgreSQL", "Performance", "SQL"],
+          image: "/articles/database.svg",
+        },
+        {
+          title: "Building a Rate Limiter with Redis",
+          summary:
+            "Step-by-step guide to implementing a distributed rate limiting system using Redis to protect your APIs from abuse.",
+          date: "2025-10-05",
+          url: "https://dev.to/xjarifx/rate-limiter-redis",
+          tags: ["Redis", "Node.js", "API Security", "Backend"],
+          image: "/articles/redis.svg",
+        },
+      ],
+    },
+
+    // ========== CERTIFICATIONS SECTION ==========
+    // Type: 'certification' - Professional certifications and courses
+    // Structure: List of certifications with name, issuer, date, credential URL, and skills
+    {
+      id: "certifications",
+      type: "certification",
+      title: "Certifications",
+      items: [
+        {
+          name: "AWS Certified Solutions Architect – Associate",
+          issuer: "Amazon Web Services",
+          date: "Jan 2026",
+          description:
+            "Validated expertise in designing distributed systems on AWS with focus on security, reliability, and cost optimization.",
+          credentialId: "AWS-ASA-123456",
+          credentialUrl: "https://aws.amazon.com/verification",
+          skills: ["AWS", "Cloud Architecture", "EC2", "S3", "RDS", "Lambda"],
+        },
+        {
+          name: "Node.js Application Developer Certification",
+          issuer: "OpenJS Foundation",
+          date: "Oct 2025",
+          description:
+            "Demonstrated proficiency in Node.js core concepts, asynchronous programming, and building production-grade applications.",
+          credentialId: "JSNAD-789012",
+          credentialUrl: "https://openjsf.org/certification",
+          skills: [
+            "Node.js",
+            "Express",
+            "Async/Await",
+            "Event Loop",
+            "Streams",
+          ],
+        },
+        {
+          name: "MongoDB Certified Developer Associate",
+          issuer: "MongoDB University",
+          date: "Aug 2025",
+          description:
+            "Certified in MongoDB fundamentals including data modeling, aggregation framework, and performance optimization.",
+          credentialId: "MDB-DEV-345678",
+          credentialUrl: "https://university.mongodb.com/certification",
+          skills: [
+            "MongoDB",
+            "NoSQL",
+            "Aggregation",
+            "Indexing",
+            "Data Modeling",
+          ],
+        },
+        {
+          name: "Docker Certified Associate",
+          issuer: "Mirantis",
+          date: "Jun 2025",
+          description:
+            "Validated skills in containerization, orchestration, and deploying applications using Docker and Docker Compose.",
+          credentialId: "DCA-901234",
+          credentialUrl: "https://www.mirantis.com/certification",
+          skills: [
+            "Docker",
+            "Containerization",
+            "Docker Compose",
+            "Networking",
+            "Volumes",
+          ],
         },
       ],
     },
@@ -135,41 +243,4 @@ export const portfolio = {
     },
     */
   ],
-
-  // ============================================================
-  // GLOBAL CONFIG: Frontend behavior and display rules
-  // ============================================================
-  config: {
-    // Spotlight effect (mouse tracking background gradient)
-    spotlight: {
-      enabled: true,
-      color: "rgba(29, 78, 216, 0.15)",
-      size: "600px",
-    },
-
-    // Smooth scroll behavior
-    smoothScroll: {
-      enabled: true,
-      behavior: "smooth",
-      block: "start",
-    },
-
-    // Intersection Observer for active section highlighting
-    observer: {
-      enabled: true,
-      thresholds: [0, 0.25, 0.5, 0.75, 1],
-      rootMargin: "-10% 0px -50% 0px",
-    },
-
-    // Layout configuration
-    layout: {
-      maxWidth: "max-w-screen-xl",
-    },
-
-    // Show/hide elements
-    display: {
-      showSocialLinks: true,
-      showSectionHeaders: true,
-    },
-  },
 };

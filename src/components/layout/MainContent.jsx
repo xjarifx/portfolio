@@ -1,8 +1,8 @@
 import { SectionHeader } from "../ui/SectionHeader";
 import { TextSection } from "../sections/TextSection";
-import { ExperienceSection } from "../sections/ExperienceSection";
 import { ProjectSection } from "../sections/ProjectSection";
 import { ArticleSection } from "../sections/ArticleSection";
+import { CertificationSection } from "../sections/CertificationSection";
 
 /**
  * MainContent component
@@ -16,12 +16,12 @@ export const MainContent = ({ sections, theme, config }) => {
     switch (section.type) {
       case "text":
         return <TextSection content={section.content} theme={theme} />;
-      case "experience":
-        return <ExperienceSection items={section.items} theme={theme} />;
       case "project":
         return <ProjectSection items={section.items} theme={theme} />;
       case "article":
         return <ArticleSection items={section.items} theme={theme} />;
+      case "certification":
+        return <CertificationSection items={section.items} theme={theme} />;
       default:
         return null;
     }

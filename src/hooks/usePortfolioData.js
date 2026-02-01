@@ -1,4 +1,6 @@
 import { portfolio } from "../data/portfolio";
+import { theme } from "../config/theme";
+import { config } from "../config/app";
 
 /**
  * Custom hook to extract and provide portfolio data
@@ -6,7 +8,7 @@ import { portfolio } from "../data/portfolio";
  * Allows for future API integration without affecting components
  */
 export const usePortfolioData = () => {
-  const { metadata, theme, sections, config } = portfolio;
+  const { metadata, sections } = portfolio;
 
   return {
     metadata,
