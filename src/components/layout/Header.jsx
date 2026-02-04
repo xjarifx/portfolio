@@ -73,15 +73,14 @@ export const Header = ({
         <div className="mt-4">
           <a
             href="/pdf/resume.pdf"
-            download
+            target="_blank"
+            rel="noreferrer noopener"
             className={`inline-flex items-center gap-2 rounded border border-slate-600/60 px-3 py-1.5 text-sm font-medium ${theme.colors.textPrimary} hover:border-slate-400/80 hover:${theme.colors.accent} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300/70 transition-colors cursor-pointer`}
-            aria-label="Download resume PDF"
+            aria-label="View resume PDF"
           >
-            Download Resume
+            View Resume
           </a>
         </div>
-
-        {/* Navigation */}
         <Navigation
           sections={sections}
           activeSection={activeSection}
@@ -141,6 +140,16 @@ const Navigation = ({ sections, activeSection, onNavClick, theme }) => {
  */
 const SocialLinks = ({ metadata, theme }) => {
   const socialIcons = {
+    email: (
+      <svg
+        className="h-6 w-6"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" />
+      </svg>
+    ),
     github: (
       <svg
         className="h-6 w-6"
@@ -185,6 +194,19 @@ const SocialLinks = ({ metadata, theme }) => {
 
   return (
     <ul className="ml-1 mt-8 flex items-center" aria-label="Social media">
+      {metadata.email && (
+        <li className="mr-5 text-xs shrink-0">
+          <a
+            className={`block ${theme.colors.text} hover:${theme.colors.accent} transition-colors`}
+            href={`mailto:${metadata.email}`}
+            aria-label="Email (opens your mail app)"
+            title="Email"
+          >
+            <span className="sr-only">Email</span>
+            {socialIcons.email}
+          </a>
+        </li>
+      )}
       {metadata.social.github && (
         <li className="mr-5 text-xs shrink-0">
           <a
@@ -193,6 +215,7 @@ const SocialLinks = ({ metadata, theme }) => {
             target="_blank"
             rel="noreferrer noopener"
             aria-label="GitHub (opens in a new tab)"
+            title="GitHub"
           >
             <span className="sr-only">GitHub</span>
             {socialIcons.github}
@@ -207,6 +230,7 @@ const SocialLinks = ({ metadata, theme }) => {
             target="_blank"
             rel="noreferrer noopener"
             aria-label="LinkedIn (opens in a new tab)"
+            title="LinkedIn"
           >
             <span className="sr-only">LinkedIn</span>
             {socialIcons.linkedin}
@@ -221,6 +245,7 @@ const SocialLinks = ({ metadata, theme }) => {
             target="_blank"
             rel="noreferrer noopener"
             aria-label="LeetCode (opens in a new tab)"
+            title="LeetCode"
           >
             <span className="sr-only">LeetCode</span>
             {socialIcons.leetcode}
@@ -235,6 +260,7 @@ const SocialLinks = ({ metadata, theme }) => {
             target="_blank"
             rel="noreferrer noopener"
             aria-label="Medium (opens in a new tab)"
+            title="Medium"
           >
             <span className="sr-only">Medium</span>
             {socialIcons.medium}
