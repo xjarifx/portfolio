@@ -4,10 +4,11 @@ export const portfolio = {
   // ============================================================
   metadata: {
     name: "Junaidul Islam Jarif",
-    title: "Full Stack Developer",
+    title: "Full-Stack Developer",
     tagline:
       "I build responsive web experiences and scalable backend systems end-to-end.",
     email: "xjarifx@gmail.com",
+    phone: "+880 1540165110",
 
     // Social links - displayed in sidebar footer
     social: {
@@ -25,13 +26,13 @@ export const portfolio = {
   // Frontend loops through this and renders accordingly
   // ORDER HERE = ORDER ON PAGE
   sections: [
-    // ========== ABOUT SECTION ==========
+    // ========== SUMMARY SECTION ==========
     // Type: 'text' - Simple paragraphs
     // Best for: Bio, introduction, main narrative
     {
-      id: "about",
+      id: "summary",
       type: "text",
-      title: "About",
+      title: "Summary",
       content: [
         "I'm a full stack developer focused on building clean, responsive interfaces and reliable APIs. I enjoy turning ideas into complete products that are easy to use, maintain, and scale.",
         "I build projects with React on the frontend and Node.js, Express, and PostgreSQL on the backend, while continuously improving my system design and architecture skills.",
@@ -119,6 +120,20 @@ export const portfolio = {
       title: "Articles",
       items: [
         {
+          title:
+            "Attention Is All You Need: How Transformers Rewired AI — And What Comes Next",
+          summary:
+            "An accessible breakdown of why Transformers replaced RNNs, how self-attention enabled modern LLMs, and which limits and next-step architectures are shaping AI’s future.",
+          date: "2026-03-03",
+          url: "https://medium.com/@xjarifx/attention-is-all-you-need-how-transformers-rewired-ai-and-what-comes-next-6927b2c4e0a7",
+          tags: [
+            "AI",
+            "Transformer Architecture",
+            "Large Language Models",
+            "Machine Learning",
+          ],
+        },
+        {
           title: "Why the Internet’s Security Actually Depends on a 1970s Toy",
           summary:
             "A practical story about why modern encryption still depends on real-world randomness, from Cloudflare’s lava lamps to chaos-based entropy sources.",
@@ -167,6 +182,7 @@ export const portfolio = {
       content: [
         "B.Sc. in Computer Science and Engineering (CSE)",
         "Daffodil International University",
+        "3.1/4.0 CGPA (2023-2027)",
       ],
     },
 

@@ -13,6 +13,8 @@ export const Header = ({
   onNavClick,
 }) => {
   const { emailCopied, handleCopyEmail } = useEmailCopy(metadata.email);
+  const { emailCopied: phoneCopied, handleCopyEmail: handleCopyPhone } =
+    useEmailCopy(metadata.phone);
   const resumeHref = `${import.meta.env.BASE_URL}resume/resume.pdf`;
 
   return (
@@ -23,8 +25,8 @@ export const Header = ({
           className={`${theme.typography.heading} ${theme.colors.textPrimary}`}
         >
           <a
-            href="#about"
-            onClick={(e) => onNavClick(e, "about")}
+            href="#summary"
+            onClick={(e) => onNavClick(e, "summary")}
             className={`hover:${theme.colors.accent} cursor-pointer transition-colors`}
           >
             {metadata.name}
@@ -37,38 +39,14 @@ export const Header = ({
         </h2>
         <p className="mt-4 max-w-xs leading-normal">{metadata.tagline}</p>
 
-        {/* Action Buttons */}
-        <div className="mt-4 flex flex-wrap items-center gap-3">
-          {metadata.email && (
-            <Button
-              onClick={handleCopyEmail}
-              size="md"
-              className="px-3 py-1.5"
-              aria-label={`Copy email ${metadata.email}`}
-              title="Click to copy"
-            >
-              <span className="font-semibold">{metadata.email}</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                className="h-4 w-4"
-                aria-hidden="true"
-              >
-                <path d="M7.5 4.5a3 3 0 013-3h4a3 3 0 013 3v6a3 3 0 01-3 3h-4a3 3 0 01-3-3v-6z" />
-                <path d="M3 8a3 3 0 013-3h1.5v1.5H6a1.5 1.5 0 00-1.5 1.5v6A1.5 1.5 0 006 15.5h4A1.5 1.5 0 0011.5 14v-1.5H13V14a3 3 0 01-3 3H6a3 3 0 01-3-3V8z" />
-              </svg>
-            </Button>
-          )}
-          {emailCopied && (
-            <span
-              className={`text-xs ${theme.colors.accent}`}
-              aria-live="polite"
-            >
-              Copied!
-            </span>
-          )}
-        </div>
+        <ContactSection
+          metadata={metadata}
+          theme={theme}
+          emailCopied={emailCopied}
+          onCopyEmail={handleCopyEmail}
+          phoneCopied={phoneCopied}
+          onCopyPhone={handleCopyPhone}
+        />
 
         {/* Resume Download Button */}
         <div className="mt-4">
@@ -137,20 +115,101 @@ const Navigation = ({ sections, activeSection, onNavClick, theme }) => {
 };
 
 /**
+ * Contact section sub-component
+ */
+const ContactSection = ({
+  metadata,
+  theme,
+  emailCopied,
+  onCopyEmail,
+  phoneCopied,
+  onCopyPhone,
+}) => {
+  const hasContact = metadata.email || metadata.phone;
+
+  if (!hasContact) return null;
+
+  return (
+    <section className="mt-8 max-w-md rounded-lg border border-slate-700/60 bg-slate-900/20 p-4">
+      <h3
+        className={`text-xs font-semibold tracking-widest uppercase ${theme.colors.textMuted}`}
+      >
+        Contact
+      </h3>
+
+      <div className="mt-3 space-y-3">
+        {metadata.email && (
+          <div>
+            <p className={`text-xs ${theme.colors.textMuted}`}>Email</p>
+            <div className="mt-1 flex flex-wrap items-center gap-2">
+              <a
+                href={`mailto:${metadata.email}`}
+                className={`text-sm font-medium ${theme.colors.textPrimary} hover:${theme.colors.accent} transition-colors`}
+              >
+                {metadata.email}
+              </a>
+              <Button
+                onClick={onCopyEmail}
+                size="sm"
+                className="px-2 py-1"
+                aria-label={`Copy email ${metadata.email}`}
+                title="Copy email"
+              >
+                Copy
+              </Button>
+              {emailCopied && (
+                <span
+                  className={`text-xs ${theme.colors.accent}`}
+                  aria-live="polite"
+                >
+                  Copied!
+                </span>
+              )}
+            </div>
+          </div>
+        )}
+
+        {metadata.phone && (
+          <div>
+            <p className={`text-xs ${theme.colors.textMuted}`}>Phone</p>
+            <div className="mt-1 flex flex-wrap items-center gap-2">
+              <a
+                href={`tel:${metadata.phone.replace(/\s+/g, "")}`}
+                className={`text-sm font-medium ${theme.colors.textPrimary} hover:${theme.colors.accent} transition-colors`}
+                aria-label={`Call ${metadata.phone}`}
+              >
+                {metadata.phone}
+              </a>
+              <Button
+                onClick={onCopyPhone}
+                size="sm"
+                className="px-2 py-1"
+                aria-label={`Copy phone number ${metadata.phone}`}
+                title="Copy phone"
+              >
+                Copy
+              </Button>
+              {phoneCopied && (
+                <span
+                  className={`text-xs ${theme.colors.accent}`}
+                  aria-live="polite"
+                >
+                  Copied!
+                </span>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+};
+
+/**
  * SocialLinks sub-component
  */
 const SocialLinks = ({ metadata, theme }) => {
   const socialIcons = {
-    email: (
-      <svg
-        className="h-6 w-6"
-        fill="currentColor"
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-      >
-        <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" />
-      </svg>
-    ),
     github: (
       <svg
         className="h-6 w-6"
@@ -195,19 +254,6 @@ const SocialLinks = ({ metadata, theme }) => {
 
   return (
     <ul className="mt-8 ml-1 flex items-center" aria-label="Social media">
-      {metadata.email && (
-        <li className="mr-5 shrink-0 text-xs">
-          <a
-            className={`block ${theme.colors.text} hover:${theme.colors.accent} transition-colors`}
-            href={`mailto:${metadata.email}`}
-            aria-label="Email (opens your mail app)"
-            title="Email"
-          >
-            <span className="sr-only">Email</span>
-            {socialIcons.email}
-          </a>
-        </li>
-      )}
       {metadata.social.github && (
         <li className="mr-5 shrink-0 text-xs">
           <a
