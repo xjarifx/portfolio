@@ -49,6 +49,27 @@ export const portfolio = {
       title: "Projects",
       items: [
         {
+          title: "Firewatch-Inspired Parallax Landing Page",
+          description:
+            "A simple parallax website inspired by the Firewatch game landing page, focused on layered scrolling visuals and immersive storytelling.",
+          highlights: [
+            "Built a smooth multi-layer parallax scrolling effect for a cinematic landing experience",
+            "Replicated Firewatch-inspired visual composition while keeping the interface lightweight",
+            "Deployed with fast static hosting for easy sharing and live preview",
+          ],
+          techStack: ["React", "Tailwind CSS", "TypeScript", "Vercel"],
+          links: [
+            {
+              label: "GitHub",
+              url: "https://github.com/xjarifx/parallax",
+            },
+            {
+              label: "Live Preview",
+              url: "https://parallax-nine-gilt.vercel.app/",
+            },
+          ],
+        },
+        {
           title: "Full Stack Social Media Platform",
           description:
             "A complete social media web application where users can create posts, follow profiles, react, comment, and chat in real time.",
@@ -134,6 +155,18 @@ export const portfolio = {
             "Core AWS Services",
           ],
         },
+      ],
+    },
+
+    // ========== EDUCATION SECTION ==========
+    // Type: 'text' - Academic background
+    {
+      id: "education",
+      type: "text",
+      title: "Education",
+      content: [
+        "B.Sc. in Computer Science and Engineering (CSE)",
+        "Daffodil International University",
       ],
     },
 
