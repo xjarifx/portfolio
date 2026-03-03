@@ -13,6 +13,7 @@ export const Header = ({
   onNavClick,
 }) => {
   const { emailCopied, handleCopyEmail } = useEmailCopy(metadata.email);
+  const resumeHref = `${import.meta.env.BASE_URL}resume/resume.pdf`;
 
   return (
     <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
@@ -72,7 +73,7 @@ export const Header = ({
         {/* Resume Download Button */}
         <div className="mt-4">
           <a
-            href="/resume/resume.pdf"
+            href={resumeHref}
             target="_blank"
             rel="noreferrer noopener"
             className={`inline-flex items-center gap-2 rounded border border-slate-600/60 px-3 py-1.5 text-sm font-medium ${theme.colors.textPrimary} hover:border-slate-400/80 hover:${theme.colors.accent} cursor-pointer transition-colors focus-visible:ring-2 focus-visible:ring-teal-300/70 focus-visible:outline-none`}
