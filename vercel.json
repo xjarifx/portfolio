@@ -1,9 +1,0 @@
-{
-  "redirects": [
-    {
-      "source": "/resume/resume.pdf",
-      "destination": "/resume/resumeWORD.docx",
-      "permanent": false
-    }
-  ]
-}
