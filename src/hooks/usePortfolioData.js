@@ -1,6 +1,11 @@
-import { portfolio } from "../data/portfolio";
+import { useMemo } from "react";
 import { theme } from "../config/theme";
 import { config } from "../config/app";
+import {
+  getPortfolioData,
+  getSectionById,
+  getSectionsByType,
+} from "../services";
 
 /**
  * Custom hook to extract and provide portfolio data
@@ -8,28 +13,27 @@ import { config } from "../config/app";
  * Allows for future API integration without affecting components
  */
 export const usePortfolioData = () => {
-  const { metadata, sections } = portfolio;
-
-  return {
-    metadata,
-    theme,
-    sections,
-    config,
-  };
+  return useMemo(() => {
+    const { metadata, sections } = getPortfolioData();
+    return {
+      metadata,
+      theme,
+      sections,
+      config,
+    };
+  }, []);
 };
 
 /**
  * Hook to get a specific section by id
  */
 export const useSectionById = (sectionId) => {
-  const { sections } = usePortfolioData();
-  return sections.find((section) => section.id === sectionId);
+  return useMemo(() => getSectionById(sectionId), [sectionId]);
 };
 
 /**
  * Hook to get all sections of a specific type
  */
 export const useSectionsByType = (type) => {
-  const { sections } = usePortfolioData();
-  return sections.filter((section) => section.type === type);
+  return useMemo(() => getSectionsByType(type), [type]);
 };

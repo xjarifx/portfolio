@@ -54,7 +54,7 @@ export const Header = ({
             href={resumeHref}
             target="_blank"
             rel="noreferrer noopener"
-            className={`inline-flex items-center gap-2 rounded border border-slate-600/60 px-3 py-1.5 text-sm font-medium ${theme.colors.textPrimary} hover:border-slate-400/80 hover:${theme.colors.accent} cursor-pointer transition-colors focus-visible:ring-2 focus-visible:ring-teal-300/70 focus-visible:outline-none`}
+            className={`inline-flex items-center gap-2 rounded glass-light px-3 py-1.5 text-sm font-medium ${theme.colors.textPrimary} hover:glass-hover hover:${theme.colors.accent} cursor-pointer transition-colors focus-visible:ring-2 focus-visible:ring-teal-300/70 focus-visible:outline-none`}
             aria-label="Open generated resume"
           >
             Resume
@@ -130,7 +130,7 @@ const ContactSection = ({
   if (!hasContact) return null;
 
   return (
-    <section className="mt-8 max-w-md rounded-lg border border-slate-700/60 bg-slate-900/20 p-4">
+    <section className="mt-8 max-w-md rounded-lg glass p-4 shadow-lg">
       <h3
         className={`text-xs font-semibold tracking-widest uppercase ${theme.colors.textMuted}`}
       >

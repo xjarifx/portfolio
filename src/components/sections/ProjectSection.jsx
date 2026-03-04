@@ -1,5 +1,6 @@
-import { Badge } from "../ui/Badge";
-import { ExternalLink } from "../ui/ExternalLink";
+import PropTypes from 'prop-types';
+import { Badge, ExternalLink, Card } from "../ui";
+import { ProjectPropType, ThemePropType } from "../../types";
 
 /**
  * ProjectItem component
@@ -8,10 +9,7 @@ import { ExternalLink } from "../ui/ExternalLink";
 const ProjectItem = ({ project, theme }) => {
   return (
     <li className={theme.spacing.itemGap}>
-      <div className="group relative grid gap-4 pb-1 transition-all lg:group-hover/list:opacity-50 lg:hover:opacity-100!">
-        <div
-          className={`absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block ${theme.colors.hoverOverlay} lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg`}
-        ></div>
+      <Card>
         {project.image && (
           <div className="z-10">
             <img
@@ -75,9 +73,14 @@ const ProjectItem = ({ project, theme }) => {
             ))}
           </ul>
         </div>
-      </div>
+      </Card>
     </li>
   );
+};
+
+ProjectItem.propTypes = {
+  project: ProjectPropType.isRequired,
+  theme: ThemePropType.isRequired,
 };
 
 /**
@@ -98,4 +101,9 @@ export const ProjectSection = ({ items, theme }) => {
       </ul>
     </div>
   );
+};
+
+ProjectSection.propTypes = {
+  items: PropTypes.arrayOf(ProjectPropType).isRequired,
+  theme: ThemePropType.isRequired,
 };

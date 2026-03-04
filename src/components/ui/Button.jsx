@@ -1,3 +1,6 @@
+import PropTypes from 'prop-types';
+import { cn } from '../../utils';
+
 /**
  * Reusable Button component
  * Supports multiple variants and sizes
@@ -9,16 +12,17 @@ export const Button = ({
   variant = "default",
   size = "md",
   type = "button",
+  disabled = false,
   ...props
 }) => {
   const baseStyles =
-    "inline-flex items-center gap-2 rounded border transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300/70";
+    "inline-flex items-center gap-2 rounded transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300/70 disabled:opacity-50 disabled:cursor-not-allowed";
 
   const variants = {
     default:
-      "border-slate-600/60 text-slate-200 hover:border-slate-400/80 hover:text-teal-300",
+      "glass-light text-slate-200 hover:glass-hover hover:text-teal-300",
     accent:
-      "border-teal-400/40 text-teal-300 hover:border-teal-400 hover:bg-teal-400/5",
+      "glass-light border-teal-400/20 text-teal-300 hover:glass-hover hover:border-teal-400/40",
   };
 
   const sizes = {
@@ -31,10 +35,21 @@ export const Button = ({
     <button
       type={type}
       onClick={onClick}
-      className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
+      disabled={disabled}
+      className={cn(baseStyles, variants[variant], sizes[size], className)}
       {...props}
     >
       {children}
     </button>
   );
+};
+
+Button.propTypes = {
+  onClick: PropTypes.func,
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+  variant: PropTypes.oneOf(['default', 'accent']),
+  size: PropTypes.oneOf(['sm', 'md', 'lg']),
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  disabled: PropTypes.bool,
 };

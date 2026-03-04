@@ -3,6 +3,7 @@ import { TextSection } from "../sections/TextSection";
 import { ProjectSection } from "../sections/ProjectSection";
 import { ArticleSection } from "../sections/ArticleSection";
 import { CertificationSection } from "../sections/CertificationSection";
+import { EducationSection } from "../sections/EducationSection";
 
 /**
  * MainContent component
@@ -22,6 +23,8 @@ export const MainContent = ({ sections, theme, config }) => {
         return <ArticleSection items={section.items} theme={theme} />;
       case "certification":
         return <CertificationSection items={section.items} theme={theme} />;
+      case "education":
+        return <EducationSection content={section.content} theme={theme} />;
       default:
         return null;
     }

@@ -174,10 +174,10 @@ export const portfolio = {
     },
 
     // ========== EDUCATION SECTION ==========
-    // Type: 'text' - Academic background
+    // Type: 'education' - Academic background with glass effect
     {
       id: "education",
-      type: "text",
+      type: "education",
       title: "Education",
       content: [
         "B.Sc. in Computer Science and Engineering (CSE)",

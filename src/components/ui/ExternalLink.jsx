@@ -1,3 +1,6 @@
+import PropTypes from 'prop-types';
+import { cn } from '../../utils';
+
 /**
  * Reusable External Link component
  * Handles external links with consistent styling and accessibility
@@ -16,7 +19,10 @@ export const ExternalLink = ({
       href={href}
       target="_blank"
       rel="noreferrer noopener"
-      className={`inline-flex items-center gap-1 rounded border border-slate-600/60 px-2.5 py-1 text-xs font-medium text-slate-200 transition-colors hover:border-slate-400/80 hover:text-teal-300 focus-visible:ring-2 focus-visible:ring-teal-300/70 focus-visible:outline-none ${className}`}
+      className={cn(
+        "inline-flex items-center gap-1 rounded border border-slate-600/60 px-2.5 py-1 text-xs font-medium text-slate-200 transition-colors hover:border-slate-400/80 hover:text-teal-300 focus-visible:ring-2 focus-visible:ring-teal-300/70 focus-visible:outline-none",
+        className
+      )}
       aria-label={label || `${children} (opens in a new tab)`}
       {...props}
     >
@@ -38,4 +44,13 @@ export const ExternalLink = ({
       )}
     </a>
   );
+};
+
+ExternalLink.propTypes = {
+  href: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+  label: PropTypes.string,
+  className: PropTypes.string,
+  textClassName: PropTypes.string,
+  showIcon: PropTypes.bool,
 };

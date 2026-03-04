@@ -7,3 +7,4 @@ export { TextSection } from "./TextSection";
 export { ProjectSection } from "./ProjectSection";
 export { ArticleSection } from "./ArticleSection";
 export { CertificationSection } from "./CertificationSection";
+export { EducationSection } from "./EducationSection";
