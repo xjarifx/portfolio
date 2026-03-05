@@ -21,23 +21,21 @@ export const Header = ({
     <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
       {/* Profile Section */}
       <div>
-        <h1
-          className={`${theme.typography.heading} ${theme.colors.textPrimary}`}
-        >
+        <h1 className={theme.typography.heading}>
           <a
             href="#summary"
             onClick={(e) => onNavClick(e, "summary")}
-            className={`hover:${theme.colors.accent} cursor-pointer transition-colors`}
+            className={`cursor-pointer transition-colors ${theme.colors.accentHover}`}
           >
             {metadata.name}
           </a>
         </h1>
-        <h2
-          className={`mt-3 ${theme.typography.subheading} ${theme.colors.textPrimary}`}
-        >
+        <h2 className={`mt-3 ${theme.typography.subheading}`}>
           {metadata.title}
         </h2>
-        <p className="mt-4 max-w-xs leading-normal">{metadata.tagline}</p>
+        <p className={`mt-4 max-w-xs leading-relaxed ${theme.colors.text}`}>
+          {metadata.tagline}
+        </p>
 
         <ContactSection
           metadata={metadata}
@@ -54,7 +52,7 @@ export const Header = ({
             href={resumeHref}
             target="_blank"
             rel="noreferrer noopener"
-            className={`inline-flex items-center gap-2 rounded glass-light px-3 py-1.5 text-sm font-medium ${theme.colors.textPrimary} hover:glass-hover hover:${theme.colors.accent} cursor-pointer transition-colors focus-visible:ring-2 focus-visible:ring-teal-300/70 focus-visible:outline-none`}
+            className={`inline-flex items-center gap-2 rounded-md border ${theme.colors.border} bg-white px-3 py-1.5 text-sm font-medium ${theme.colors.textPrimary} ${theme.colors.surfaceHover} ${theme.colors.accentHover} cursor-pointer transition-colors focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:outline-none`}
             aria-label="Open generated resume"
           >
             Resume
@@ -93,10 +91,10 @@ const Navigation = ({ sections, activeSection, onNavClick, theme }) => {
               <span
                 className={`nav-indicator mr-4 h-px transition-all duration-300 ${
                   activeSection === section.id
-                    ? `w-16 ${theme.colors.lineActive}`
-                    : `w-8 ${theme.colors.line} group-hover:w-16 group-hover:${theme.colors.lineActive}`
+                    ? `w-12 sm:w-16 ${theme.colors.lineActive}`
+                    : `w-6 sm:w-8 ${theme.colors.line} group-hover:w-12 group-hover:sm:w-16 group-hover:${theme.colors.lineActive}`
                 }`}
-              ></span>
+              />
               <span
                 className={`nav-text ${theme.typography.label} transition-colors duration-300 ${
                   activeSection === section.id
@@ -130,10 +128,8 @@ const ContactSection = ({
   if (!hasContact) return null;
 
   return (
-    <section className="mt-8 max-w-md rounded-lg glass p-4 shadow-lg">
-      <h3
-        className={`text-xs font-semibold tracking-widest uppercase ${theme.colors.textMuted}`}
-      >
+    <section className={`mt-8 max-w-md rounded-lg border ${theme.colors.border} ${theme.colors.surface} p-4`}>
+      <h3 className={`text-xs font-semibold tracking-widest uppercase ${theme.colors.textMuted}`}>
         Contact
       </h3>
 
@@ -144,7 +140,7 @@ const ContactSection = ({
             <div className="mt-1 flex flex-wrap items-center gap-2">
               <a
                 href={`mailto:${metadata.email}`}
-                className={`text-sm font-medium ${theme.colors.textPrimary} hover:${theme.colors.accent} transition-colors`}
+                className={`text-sm font-medium ${theme.colors.textPrimary} ${theme.colors.accentHover} transition-colors`}
               >
                 {metadata.email}
               </a>
@@ -158,10 +154,7 @@ const ContactSection = ({
                 Copy
               </Button>
               {emailCopied && (
-                <span
-                  className={`text-xs ${theme.colors.accent}`}
-                  aria-live="polite"
-                >
+                <span className={`text-xs ${theme.colors.accent}`} aria-live="polite">
                   Copied!
                 </span>
               )}
@@ -175,7 +168,7 @@ const ContactSection = ({
             <div className="mt-1 flex flex-wrap items-center gap-2">
               <a
                 href={`tel:${metadata.phone.replace(/\s+/g, "")}`}
-                className={`text-sm font-medium ${theme.colors.textPrimary} hover:${theme.colors.accent} transition-colors`}
+                className={`text-sm font-medium ${theme.colors.textPrimary} ${theme.colors.accentHover} transition-colors`}
                 aria-label={`Call ${metadata.phone}`}
               >
                 {metadata.phone}
@@ -257,7 +250,7 @@ const SocialLinks = ({ metadata, theme }) => {
       {metadata.social.github && (
         <li className="mr-5 shrink-0 text-xs">
           <a
-            className={`block ${theme.colors.text} hover:${theme.colors.accent} transition-colors`}
+            className={`block ${theme.colors.text} ${theme.colors.accentHover} transition-colors`}
             href={metadata.social.github}
             target="_blank"
             rel="noreferrer noopener"
@@ -272,7 +265,7 @@ const SocialLinks = ({ metadata, theme }) => {
       {metadata.social.linkedin && (
         <li className="mr-5 shrink-0 text-xs">
           <a
-            className={`block ${theme.colors.text} hover:${theme.colors.accent} transition-colors`}
+            className={`block ${theme.colors.text} ${theme.colors.accentHover} transition-colors`}
             href={metadata.social.linkedin}
             target="_blank"
             rel="noreferrer noopener"
@@ -287,7 +280,7 @@ const SocialLinks = ({ metadata, theme }) => {
       {metadata.social.leetcode && (
         <li className="mr-5 shrink-0 text-xs">
           <a
-            className={`block ${theme.colors.text} hover:${theme.colors.accent} transition-colors`}
+            className={`block ${theme.colors.text} ${theme.colors.accentHover} transition-colors`}
             href={metadata.social.leetcode}
             target="_blank"
             rel="noreferrer noopener"
@@ -302,7 +295,7 @@ const SocialLinks = ({ metadata, theme }) => {
       {metadata.social.medium && (
         <li className="mr-5 shrink-0 text-xs">
           <a
-            className={`block ${theme.colors.text} hover:${theme.colors.accent} transition-colors`}
+            className={`block ${theme.colors.text} ${theme.colors.accentHover} transition-colors`}
             href={metadata.social.medium}
             target="_blank"
             rel="noreferrer noopener"

@@ -1,29 +1,33 @@
 /**
  * Theme Configuration
- * Design tokens and styling constants for the portfolio
- * These are Tailwind class references - update here to change global look
- * All components use these tokens, so one change updates everywhere
+ * Light theme: purple accent, neutral (black, white, gray). No gradients.
+ * Design tokens for the portfolio — components use these for consistent look.
  */
 export const theme = {
   colors: {
-    background: "bg-slate-900",
-    text: "text-slate-400",
-    textPrimary: "text-slate-200",
-    textMuted: "text-slate-500",
-    accent: "text-teal-300",
-    accentBg: "bg-teal-400/10",
-    line: "bg-slate-600",
-    lineActive: "bg-slate-200",
-    hoverOverlay: "lg:group-hover:bg-slate-800/50",
+    background: "bg-white",
+    text: "text-gray-600",
+    textPrimary: "text-gray-900",
+    textMuted: "text-gray-500",
+    accent: "text-purple-600",
+    accentHover: "hover:text-purple-700",
+    accentBg: "bg-purple-50",
+    accentBorder: "border-purple-200",
+    line: "bg-gray-300",
+    lineActive: "bg-purple-600",
+    surface: "bg-gray-50",
+    surfaceHover: "hover:bg-gray-100",
+    border: "border-gray-200",
+    borderMuted: "border-gray-100",
   },
   spacing: {
-    sectionGap: "lg:mb-36 md:mb-24 mb-16",
-    itemGap: "mb-12",
+    sectionGap: "mb-12 sm:mb-16 md:mb-20 lg:mb-24",
+    itemGap: "mb-8 sm:mb-10",
     contentGap: "mt-2",
   },
   typography: {
-    heading: "text-4xl font-bold tracking-tight sm:text-5xl",
-    subheading: "text-lg font-medium tracking-tight sm:text-xl",
-    label: "text-xs font-bold uppercase tracking-widest",
+    heading: "text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl md:text-5xl",
+    subheading: "text-lg font-medium tracking-tight text-gray-900 sm:text-xl",
+    label: "text-xs font-semibold uppercase tracking-widest text-gray-500",
   },
 };

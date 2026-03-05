@@ -31,7 +31,7 @@ export const MainContent = ({ sections, theme, config }) => {
   };
 
   return (
-    <main className="pt-24 lg:w-1/2 lg:py-24">
+    <main className="pt-8 sm:pt-12 md:pt-16 lg:pt-24 lg:w-1/2 lg:py-24">
       {sections.map((section) => (
         <section
           key={section.id}
@@ -48,11 +48,11 @@ export const MainContent = ({ sections, theme, config }) => {
       ))}
 
       {/* Attribution Footer */}
-      <footer className="mt-[600px] border-t border-slate-700/50 pt-8">
+      <footer className={`mt-16 sm:mt-24 border-t ${theme.colors.border} pt-8`}>
         <p className={`text-xs ${theme.colors.textMuted}`}>
           Design inspired by{" "}
           <a
-            className={`font-medium ${theme.colors.textPrimary} hover:${theme.colors.accent} transition-colors`}
+            className={`font-medium ${theme.colors.textPrimary} ${theme.colors.accentHover} transition-colors`}
             href="https://brittanychiang.com"
             target="_blank"
             rel="noreferrer noopener"

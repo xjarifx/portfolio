@@ -3,7 +3,7 @@ import { cn } from '../../utils';
 
 /**
  * Reusable Button component
- * Supports multiple variants and sizes
+ * Light theme: solid surfaces, purple accent. No gradients.
  */
 export const Button = ({
   onClick,
@@ -16,13 +16,13 @@ export const Button = ({
   ...props
 }) => {
   const baseStyles =
-    "inline-flex items-center gap-2 rounded transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300/70 disabled:opacity-50 disabled:cursor-not-allowed";
+    "inline-flex items-center gap-2 rounded-md transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
 
   const variants = {
     default:
-      "glass-light text-slate-200 hover:glass-hover hover:text-teal-300",
+      "border border-gray-200 bg-white text-gray-900 hover:bg-gray-50 hover:border-gray-300",
     accent:
-      "glass-light border-teal-400/20 text-teal-300 hover:glass-hover hover:border-teal-400/40",
+      "border border-purple-200 bg-purple-50 text-purple-700 hover:bg-purple-100 hover:border-purple-300",
   };
 
   const sizes = {
