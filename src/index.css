@@ -1,25 +1,26 @@
 @import "tailwindcss";
 
-/* Glass effect utilities */
-.glass {
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(148, 163, 184, 0.1);
+/* Light theme base — no gradients, solid surfaces. Mobile-first. */
+html {
+  scroll-behavior: smooth;
 }
 
-.glass-light {
-  background: rgba(30, 41, 59, 0.4);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(148, 163, 184, 0.15);
+body {
+  background-color: #ffffff;
+  color: #374151;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
 }
 
-.glass-hover {
-  background: rgba(15, 23, 42, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(148, 163, 184, 0.2);
+:root {
+  --color-bg: #ffffff;
+  --color-surface: #f9fafb;
+  --color-border: #e5e7eb;
+  --color-text: #374151;
+  --color-text-primary: #111827;
+  --color-accent: #7c3aed;
+  --color-accent-hover: #6d28d9;
 }
 
 @media print {
@@ -31,7 +32,7 @@
   html,
   body {
     background: #ffffff;
-    color: #0f172a;
+    color: #111827;
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
   }
@@ -44,7 +45,7 @@
     min-height: auto !important;
     padding: 0 !important;
     background: #ffffff !important;
-    color: #0f172a !important;
+    color: #111827 !important;
   }
 
   a {

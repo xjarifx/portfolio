@@ -1,26 +1,25 @@
 import PropTypes from 'prop-types';
 
 /**
- * CardLink component
- * Reusable link component for cards with hover effects
+ * Card link — used in article/cert cards. Light theme: purple hover, no gradient.
  */
 export const CardLink = ({ href, children, ariaLabel }) => {
   return (
     <a
-      className="inline-flex items-baseline leading-tight font-medium text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base"
+      className="inline-flex items-baseline font-medium text-gray-900 transition-colors hover:text-purple-600 focus-visible:text-purple-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 group/link text-base leading-tight"
       href={href}
       target="_blank"
       rel="noreferrer noopener"
       aria-label={ariaLabel}
     >
-      <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
+      <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block" />
       <span>
         {children}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
-          className="ml-1 inline-block h-4 w-4 shrink-0 translate-y-px transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 group-focus-visible/link:translate-x-1 group-focus-visible/link:-translate-y-1 motion-reduce:transition-none"
+          className="ml-1 inline-block h-4 w-4 shrink-0 translate-y-px transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 motion-reduce:transition-none"
           aria-hidden="true"
         >
           <path

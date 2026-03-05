@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import { cn } from '../../utils';
 
 /**
- * Reusable External Link component
- * Handles external links with consistent styling and accessibility
+ * External link component
+ * Light theme: gray border, purple hover. No gradients.
  */
 export const ExternalLink = ({
   href,
@@ -20,7 +20,7 @@ export const ExternalLink = ({
       target="_blank"
       rel="noreferrer noopener"
       className={cn(
-        "inline-flex items-center gap-1 rounded border border-slate-600/60 px-2.5 py-1 text-xs font-medium text-slate-200 transition-colors hover:border-slate-400/80 hover:text-teal-300 focus-visible:ring-2 focus-visible:ring-teal-300/70 focus-visible:outline-none",
+        "inline-flex items-center gap-1 rounded-md border border-gray-200 bg-white px-2.5 py-1 text-xs font-medium text-gray-700 transition-colors hover:border-purple-300 hover:bg-purple-50 hover:text-purple-700 focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:outline-none",
         className
       )}
       aria-label={label || `${children} (opens in a new tab)`}
@@ -32,7 +32,7 @@ export const ExternalLink = ({
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
-          className="h-3.5 w-3.5"
+          className="h-3.5 w-3.5 shrink-0"
           aria-hidden="true"
         >
           <path

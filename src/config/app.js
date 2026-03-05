@@ -3,11 +3,11 @@
  * Frontend behavior and display rules
  */
 export const config = {
-  // Spotlight effect (mouse tracking background gradient)
+  // Spotlight effect (disabled — no gradients in design)
   spotlight: {
-    enabled: true,
-    color: "rgba(29, 78, 216, 0.15)",
-    size: "600px",
+    enabled: false,
+    color: "transparent",
+    size: "0",
   },
 
   // Smooth scroll behavior

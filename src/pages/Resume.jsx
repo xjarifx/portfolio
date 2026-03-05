@@ -17,8 +17,8 @@ function Resume() {
     <main
       className={`resume-page min-h-screen ${theme.colors.background} ${theme.colors.text} px-4 py-8 md:px-8 md:py-12`}
     >
-      <div className="mx-auto w-full max-w-4xl rounded-lg border border-slate-700/60 bg-slate-900/40 p-6 md:p-10 print:max-w-none print:rounded-none print:border-0 print:bg-transparent print:p-0">
-        <header className="border-b border-slate-700/60 pb-5">
+      <div className={`mx-auto w-full max-w-4xl rounded-lg border ${theme.colors.border} bg-white p-6 md:p-10 print:max-w-none print:rounded-none print:border-0 print:bg-transparent print:p-0 shadow-sm`}>
+        <header className={`border-b ${theme.colors.border} pb-5`}>
           <h1 className={`text-3xl font-bold ${theme.colors.textPrimary}`}>
             {metadata.name}
           </h1>
@@ -31,7 +31,7 @@ function Resume() {
             {metadata.email && (
               <a
                 href={`mailto:${metadata.email}`}
-                className={`hover:${theme.colors.accent} transition-colors`}
+                className={`${theme.colors.accentHover} transition-colors`}
               >
                 {metadata.email}
               </a>
@@ -42,7 +42,7 @@ function Resume() {
                 href={metadata.social.linkedin}
                 target="_blank"
                 rel="noreferrer noopener"
-                className={`hover:${theme.colors.accent} transition-colors`}
+                className={`${theme.colors.accentHover} transition-colors`}
               >
                 LinkedIn
               </a>
@@ -52,7 +52,7 @@ function Resume() {
                 href={metadata.social.github}
                 target="_blank"
                 rel="noreferrer noopener"
-                className={`hover:${theme.colors.accent} transition-colors`}
+                className={`${theme.colors.accentHover} transition-colors`}
               >
                 GitHub
               </a>
@@ -63,13 +63,13 @@ function Resume() {
             <button
               type="button"
               onClick={() => window.print()}
-              className={`inline-flex cursor-pointer items-center rounded border border-slate-600/60 px-3 py-1.5 text-sm font-medium ${theme.colors.textPrimary} hover:border-slate-400/80 hover:${theme.colors.accent} transition-colors`}
+              className={`inline-flex cursor-pointer items-center rounded-md border ${theme.colors.border} bg-white px-3 py-1.5 text-sm font-medium ${theme.colors.textPrimary} hover:bg-gray-50 hover:border-gray-300 ${theme.colors.accentHover} transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500`}
             >
               Download as PDF
             </button>
             <Link
               to="/"
-              className={`inline-flex items-center rounded border border-slate-600/60 px-3 py-1.5 text-sm font-medium ${theme.colors.textPrimary} hover:border-slate-400/80 hover:${theme.colors.accent} transition-colors`}
+              className={`inline-flex items-center rounded-md border ${theme.colors.border} bg-white px-3 py-1.5 text-sm font-medium ${theme.colors.textPrimary} hover:bg-gray-50 hover:border-gray-300 ${theme.colors.accentHover} transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500`}
             >
               Back to Portfolio
             </Link>
@@ -78,9 +78,7 @@ function Resume() {
 
         {summarySection?.content?.length > 0 && (
           <section className="mt-6">
-            <h2
-              className={`text-sm font-semibold tracking-widest uppercase ${theme.colors.textPrimary}`}
-            >
+            <h2 className={theme.typography.label}>
               Summary
             </h2>
             <div className="mt-2 space-y-2 text-sm leading-relaxed">
@@ -93,9 +91,7 @@ function Resume() {
 
         {projectsSection?.items?.length > 0 && (
           <section className="mt-7">
-            <h2
-              className={`text-sm font-semibold tracking-widest uppercase ${theme.colors.textPrimary}`}
-            >
+            <h2 className={theme.typography.label}>
               Projects
             </h2>
             <div className="mt-3 space-y-4">
@@ -139,7 +135,7 @@ function Resume() {
                             href={link.url}
                             target="_blank"
                             rel="noreferrer noopener"
-                            className={`hover:${theme.colors.accent} transition-colors`}
+                            className={`${theme.colors.accentHover} transition-colors`}
                           >
                             {link.label}
                           </a>
@@ -156,9 +152,7 @@ function Resume() {
 
         {certificationsSection?.items?.length > 0 && (
           <section className="mt-7">
-            <h2
-              className={`text-sm font-semibold tracking-widest uppercase ${theme.colors.textPrimary}`}
-            >
+            <h2 className={theme.typography.label}>
               Certifications
             </h2>
             <div className="mt-3 space-y-3">
@@ -191,9 +185,7 @@ function Resume() {
 
         {educationSection?.items?.length > 0 && (
           <section className="mt-7">
-            <h2
-              className={`text-sm font-semibold tracking-widest uppercase ${theme.colors.textPrimary}`}
-            >
+            <h2 className={theme.typography.label}>
               Education
             </h2>
             <div className="mt-2 space-y-3 text-sm">
