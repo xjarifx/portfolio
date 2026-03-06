@@ -16,7 +16,7 @@ export const MainContent = ({ sections, theme, config }) => {
   const renderSectionContent = (section) => {
     switch (section.type) {
       case "text":
-        return <TextSection content={section.content} theme={theme} />;
+        return <TextSection content={section.content} />;
       case "project":
         return <ProjectSection items={section.items} theme={theme} />;
       case "article":

@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ErrorBoundary } from "./components/common";
-import { ROUTES } from "./constants";
 import Home from "./pages/Home";
 
 function App() {
@@ -8,7 +7,7 @@ function App() {
     <ErrorBoundary>
       <Router>
         <Routes>
-          <Route path={ROUTES.HOME} element={<Home />} />
+          <Route path="/" element={<Home />} />
         </Routes>
       </Router>
     </ErrorBoundary>

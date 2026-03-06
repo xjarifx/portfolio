@@ -1,23 +1,13 @@
 /**
  * Application Configuration
- * Frontend behavior and display rules
  */
 export const config = {
-  // Spotlight effect (disabled — no gradients in design)
-  spotlight: {
-    enabled: false,
-    color: "transparent",
-    size: "0",
-  },
-
-  // Smooth scroll behavior
   smoothScroll: {
     enabled: true,
     behavior: "smooth",
     block: "start",
   },
 
-  // Intersection Observer for active section highlighting
   observer: {
     enabled: true,
     thresholds: [0, 0.25, 0.5, 0.75, 1],

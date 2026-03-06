@@ -4,7 +4,7 @@ import { ResumeDocument } from "./ResumeDocument";
 /**
  * Resume button that generates PDF from portfolio data and opens it in a new tab
  */
-export const ResumeButton = ({ metadata, sections, theme, className }) => {
+export const ResumeButton = ({ metadata, sections, className }) => {
   return (
     <BlobProvider
       document={<ResumeDocument metadata={metadata} sections={sections} />}

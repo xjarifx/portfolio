@@ -1,27 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 
 /**
- * Hook to track mouse position for spotlight effect
- * Optimized to only run when spotlight is enabled
- */
-export const useMouseTracking = (enabled = true) => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    if (!enabled) return;
-
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [enabled]);
-
-  return mousePosition;
-};
-
-/**
  * Hook to manage smooth scrolling behavior
  */
 export const useSmoothScroll = (enabled = true, behavior = "smooth") => {
