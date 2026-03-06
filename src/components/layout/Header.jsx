@@ -33,7 +33,9 @@ export const Header = ({
         <h2 className={`mt-3 ${theme.typography.subheading}`}>
           {metadata.title}
         </h2>
-        <p className={`mt-4 max-w-xs text-base leading-relaxed ${theme.colors.text}`}>
+        <p
+          className={`mt-4 max-w-xs text-base leading-relaxed ${theme.colors.text}`}
+        >
           {metadata.tagline}
         </p>
 
@@ -46,14 +48,6 @@ export const Header = ({
           onCopyPhone={handleCopyPhone}
         />
 
-        {/* Resume - opens auto-generated PDF in new tab */}
-        <div className="mt-4">
-          <ResumeButton
-            metadata={metadata}
-            sections={sections}
-            className={`inline-flex items-center gap-2 rounded-md border ${theme.colors.border} ${theme.colors.buttonBg} px-3 py-1.5 text-sm font-medium ${theme.colors.textPrimary} ${theme.colors.surfaceHover} ${theme.colors.accentHover} cursor-pointer transition-colors focus-visible:ring-2 focus-visible:ring-purple-400 focus-visible:outline-none`}
-          />
-        </div>
         <Navigation
           sections={sections}
           activeSection={activeSection}
@@ -62,7 +56,7 @@ export const Header = ({
         />
       </div>
 
-      {/* Social Links */}
+      {/* Social Links and Resume */}
       {metadata.social && Object.keys(metadata.social).length > 0 && (
         <SocialLinks metadata={metadata} theme={theme} />
       )}
@@ -125,10 +119,6 @@ const ContactSection = ({
 
   return (
     <section className="mt-8 max-w-md">
-      <h3 className={`text-sm font-semibold tracking-widest uppercase ${theme.colors.textMuted}`}>
-        Contact
-      </h3>
-
       <div className="mt-3 space-y-4">
         {metadata.email && (
           <div>
@@ -150,7 +140,10 @@ const ContactSection = ({
                 Copy
               </Button>
               {emailCopied && (
-                <span className={`text-sm ${theme.colors.accent}`} aria-live="polite">
+                <span
+                  className={`text-sm ${theme.colors.accent}`}
+                  aria-live="polite"
+                >
                   Copied!
                 </span>
               )}
@@ -239,10 +232,20 @@ const SocialLinks = ({ metadata, theme }) => {
         <path d="M4.21 0A4.201 4.201 0 0 0 0 4.21v15.58A4.201 4.201 0 0 0 4.21 24h15.58A4.201 4.201 0 0 0 24 19.79v-1.093c-.137.013-.278.02-.422.02-2.577 0-4.027-2.146-4.09-4.832a7.592 7.592 0 0 1 .022-.708c.093-1.186.475-2.241 1.105-3.022a3.885 3.885 0 0 1 1.395-1.1c.468-.237 1.127-.367 1.664-.367h.023c.101 0 .202.004.303.01V4.211A4.201 4.201 0 0 0 19.79 0Zm.198 5.583h4.165l3.588 8.435 3.59-8.435h3.864v.146l-.019.004c-.705.16-1.063.397-1.063 1.254h-.003l.003 10.274c.06.676.424.885 1.063 1.03l.02.004v.145h-4.923v-.145l.019-.005c.639-.144.994-.353 1.054-1.03V7.267l-4.745 11.15h-.261L6.15 7.569v9.445c0 .857.358 1.094 1.063 1.253l.02.004v.147H4.405v-.147l.019-.004c.705-.16 1.065-.397 1.065-1.253V6.987c0-.857-.358-1.094-1.064-1.254l-.018-.004zm19.25 3.668c-1.086.023-1.733 1.323-1.813 3.124H24V9.298a1.378 1.378 0 0 0-.342-.047z" />
       </svg>
     ),
+    resume: (
+      <svg
+        className="h-6 w-6"
+        fill="currentColor"
+        viewBox="0 0 27 27"
+        aria-hidden="true"
+      >
+        <path d="M16.41 2.91c-.43-.43-1-.66-1.6-.66H6.75c-1.24 0-2.25 1.01-2.25 2.25v18c0 1.24 1 2.25 2.24 2.25h12.76c1.24 0 2.25-1.01 2.25-2.25V9.93c0-.6-.24-1.17-.66-1.59l-5.42-5.43zM16.88 20.25h-6.76c-.62 0-1.12-.51-1.12-1.12s.51-1.12 1.12-1.12h6.76c.62 0 1.12.51 1.12 1.12s-.51 1.12-1.12 1.12zm0-4.5h-6.76c-.62 0-1.12-.51-1.12-1.12s.51-1.12 1.12-1.12h6.76c.62 0 1.12.51 1.12 1.12s-.51 1.12-1.12 1.12zm-2.25-6.75V3.94l5.62 5.62h-4.5c-.62 0-1.12-.51-1.12-1.12z" />
+      </svg>
+    ),
   };
 
   return (
-    <ul className="mt-8 ml-1 flex items-center" aria-label="Social media">
+    <ul className="flex items-center mt-8" aria-label="Social media">
       {metadata.social.github && (
         <li className="mr-5 shrink-0 text-sm">
           <a
@@ -303,6 +306,18 @@ const SocialLinks = ({ metadata, theme }) => {
           </a>
         </li>
       )}
+      <li className="mr-5 shrink-0 text-sm">
+        <a
+          className="inline-block rounded-md border border-purple-400 px-2 py-1 text-purple-400 transition-colors hover:bg-purple-400 hover:text-white"
+          href="/resume/resume.pdf"
+          target="_blank"
+          rel="noreferrer noopener"
+          aria-label="Resume (opens PDF in new tab)"
+          title="Resume"
+        >
+          Resume
+        </a>
+      </li>
     </ul>
   );
 };

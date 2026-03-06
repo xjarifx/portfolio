@@ -1,31 +1,25 @@
-import { BlobProvider } from "@react-pdf/renderer";
-import { ResumeDocument } from "./ResumeDocument";
-
 /**
- * Resume button that generates PDF from portfolio data and opens it in a new tab
+ * Resume button that links to a static PDF file
  */
-export const ResumeButton = ({ metadata, sections, className }) => {
+export const ResumeButton = ({ className }) => {
   return (
-    <BlobProvider
-      document={<ResumeDocument metadata={metadata} sections={sections} />}
+    <a
+      href="/resume/resume.pdf"
+      target="_blank"
+      rel="noreferrer noopener"
+      className={className}
+      aria-label="View resume (opens PDF in new tab)"
+      title="Resume"
     >
-      {({ url, loading }) => (
-        <a
-          href={url || "#"}
-          target="_blank"
-          rel="noreferrer noopener"
-          className={className}
-          aria-label="View resume (opens PDF in new tab)"
-          onClick={(e) => {
-            if (loading || !url) {
-              e.preventDefault();
-            }
-          }}
-          style={{ pointerEvents: loading ? "none" : "auto" }}
-        >
-          {loading ? "Generating…" : "Resume"}
-        </a>
-      )}
-    </BlobProvider>
+      <span className="sr-only">Resume</span>
+      <svg
+        className="h-6 w-6"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM6 20V4h7v5h5v11H6zm2-6h8v2H8v-2zm0-4h8v2H8v-2zm0 8h5v2H8v-2z" />
+      </svg>
+    </a>
   );
 };

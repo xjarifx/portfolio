@@ -10,8 +10,11 @@ export const config = {
 
   observer: {
     enabled: true,
-    thresholds: [0, 0.25, 0.5, 0.75, 1],
-    rootMargin: "-10% 0px -50% 0px",
+    // Multiple thresholds for fine-grained intersection detection
+    thresholds: [0, 0.1, 0.25, 0.5, 0.75, 1],
+    // Top margin: -10% ensures section needs to be past header
+    // Bottom margin: -35% focuses on sections in upper portion of viewport
+    rootMargin: "-10% 0px -35% 0px",
   },
 
   // Layout configuration
