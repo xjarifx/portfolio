@@ -144,6 +144,20 @@ export const portfolio = {
       items: [
         {
           title:
+            "AI and the Great RAM Crunch: Why Memory Is the New Bottleneck",
+          summary:
+            "An exploration of the 2026 memory chip crisis affecting AI infrastructure, examining why AI workloads are memory-intensive and the paths toward solving the RAM shortage.",
+          date: "2026-03-08",
+          url: "https://medium.com/@xjarifx/ai-and-the-great-ram-crunch-why-memory-is-the-new-bottleneck-ec8347263e98",
+          tags: [
+            "AI",
+            "Hardware",
+            "Memory",
+            "Infrastructure",
+          ],
+        },
+        {
+          title:
             "System Design Is Not About Systems, It's About Thinking in Constraints",
           summary:
             "A reframe of system design as a mindset: working within constraints, making trade-offs, and reasoning about scale, reliability, and clarity—not just drawing boxes.",
