@@ -4,7 +4,7 @@ export const portfolio = {
   // ============================================================
   metadata: {
     name: "Junaidul Islam Jarif",
-    title: "Software Engineer",
+    title: "Full-Stack Engineer",
     tagline:
       "I build responsive web experiences and scalable backend systems end-to-end.",
     email: "xjarifx@gmail.com",
