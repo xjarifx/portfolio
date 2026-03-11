@@ -90,6 +90,27 @@ export const portfolio = {
           ],
         },
         {
+          title: "Dashboard (Frontend)",
+          description:
+            "A responsive analytics dashboard with data visualization, real-time metrics, and interactive charts for monitoring application performance and user engagement.",
+          highlights: [
+            "Built responsive dashboard with interactive charts and real-time data visualization",
+            "Implemented modular component architecture with TypeScript for type safety and maintainability",
+            "Deployed to production with optimized performance and responsive design across all devices",
+          ],
+          techStack: ["React", "TypeScript", "Tailwind CSS"],
+          links: [
+            {
+              label: "GitHub",
+              url: "https://github.com/xjarifx/Dashboard-Frontend",
+            },
+            {
+              label: "Live Preview",
+              url: "https://dashboard-frontend-sigma-inky.vercel.app/dashboard",
+            },
+          ],
+        },
+        {
           title: "Flower Shop (Frontend)",
           description:
             "A modern, responsive flower shop frontend with product showcases, category filtering, cart preview, and smooth mobile-first UI.",
