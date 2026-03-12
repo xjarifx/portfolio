@@ -56,7 +56,14 @@ export const portfolio = {
             "Integrated Stripe payments for PRO subscriptions and Redis caching for optimized performance",
             "Developed RESTful API with Prisma ORM and responsive UI using TailwindCSS and Radix UI",
           ],
-          techStack: ["React", "TypeScript", "Node.js", "Express", "PostgreSQL", "Redis"],
+          techStack: [
+            "React",
+            "TypeScript",
+            "Node.js",
+            "Express",
+            "PostgreSQL",
+            "Redis",
+          ],
           links: [
             {
               label: "GitHub",
@@ -65,6 +72,27 @@ export const portfolio = {
             {
               label: "Live Preview",
               url: "https://social-network-ten-ruby.vercel.app/",
+            },
+          ],
+        },
+        {
+          title: "Ecommerce (Frontend)",
+          description:
+            "A fully-featured Amazon-like ecommerce platform frontend with product browsing, filtering, search, cart management, and secure checkout experience.",
+          highlights: [
+            "Implemented advanced product discovery with filtering, sorting, and search functionality for seamless shopping experience",
+            "Built interactive shopping cart with quantity management, real-time price calculations, and persistent state management",
+            "Designed responsive product pages and checkout flow optimized for mobile and desktop user engagement",
+          ],
+          techStack: ["React", "TypeScript", "Tailwind CSS"],
+          links: [
+            {
+              label: "GitHub",
+              url: "https://github.com/xjarifx/Ecommerce-Frontend",
+            },
+            {
+              label: "Live Preview",
+              url: "https://ecommerce-frontend-seven-snowy.vercel.app/",
             },
           ],
         },
@@ -170,12 +198,7 @@ export const portfolio = {
             "An exploration of the 2026 memory chip crisis affecting AI infrastructure, examining why AI workloads are memory-intensive and the paths toward solving the RAM shortage.",
           date: "2026-03-08",
           url: "https://medium.com/@xjarifx/ai-and-the-great-ram-crunch-why-memory-is-the-new-bottleneck-ec8347263e98",
-          tags: [
-            "AI",
-            "Hardware",
-            "Memory",
-            "Infrastructure",
-          ],
+          tags: ["AI", "Hardware", "Memory", "Infrastructure"],
         },
         {
           title:
