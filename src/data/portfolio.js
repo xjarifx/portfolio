@@ -16,6 +16,9 @@ export const portfolio = {
       linkedin: "https://www.linkedin.com/in/xjarifx",
       leetcode: "https://leetcode.com/xjarifx",
       medium: "https://medium.com/@xjarifx",
+      fiverr: "https://www.fiverr.com/jarif__",
+      x: "https://x.com/J4R1F",
+      instagram: "https://www.instagram.com/md_junaidul_islam_jarif",
     },
   },
 
@@ -38,10 +41,21 @@ export const portfolio = {
       ],
     },
 
+    // ========== TECH STACK SECTION ==========
+    {
+      id: "techstack",
+      type: "techstack",
+      title: "Tech Stack",
+      categories: [
+        { label: "Frontend", skills: ["React", "Next.js", "Tailwind CSS", "Radix UI", "Vite"] },
+        { label: "Backend", skills: ["Node.js", "Express", "REST APIs", "JWT", "Zod"] },
+        { label: "Database", skills: ["PostgreSQL", "MongoDB", "Prisma", "Redis"] },
+        { label: "Tools / Cloud", skills: ["AWS", "Docker", "Git", "Vercel", "Render", "Postman"] },
+        { label: "Languages", skills: ["TypeScript", "JavaScript (ES6+)", "SQL"] },
+      ],
+    },
+
     // ========== PROJECTS SECTION ==========
-    // Type: 'project' - Portfolio projects with highlights
-    // Structure: List of projects with title, description, highlights, tech stack, links, images
-    // Frontend renders as: Project card with image + tech badges + highlights bullets
     {
       id: "projects",
       type: "project",
@@ -51,133 +65,56 @@ export const portfolio = {
           title: "Social Media (Full-Stack)",
           description:
             "A complete social network with authentication, posts, comments, likes, follows, notifications, and user blocking functionality.",
-          highlights: [
-            "Built social network with auth, posts, comments, likes, follows, notifications, and user blocking",
-            "Integrated Stripe payments for PRO subscriptions and Redis caching for optimized performance",
-            "Developed RESTful API with Prisma ORM and responsive UI using TailwindCSS and Radix UI",
-          ],
-          techStack: [
-            "React",
-            "TypeScript",
-            "Node.js",
-            "Express",
-            "PostgreSQL",
-            "Redis",
-          ],
           links: [
-            {
-              label: "GitHub",
-              url: "https://github.com/xjarifx/social-network",
-            },
-            {
-              label: "Live Preview",
-              url: "https://social-network-ten-ruby.vercel.app/",
-            },
+            { label: "GitHub", url: "https://github.com/xjarifx/social-network" },
+            { label: "Live Preview", url: "https://social-network-ten-ruby.vercel.app/" },
           ],
         },
         {
           title: "Ecommerce (Frontend)",
           description:
             "A fully-featured Amazon-like ecommerce platform frontend with product browsing, filtering, search, cart management, and secure checkout experience.",
-          highlights: [
-            "Implemented advanced product discovery with filtering, sorting, and search functionality for seamless shopping experience",
-            "Built interactive shopping cart with quantity management, real-time price calculations, and persistent state management",
-            "Designed responsive product pages and checkout flow optimized for mobile and desktop user engagement",
-          ],
-          techStack: ["React", "TypeScript", "Tailwind CSS"],
           links: [
-            {
-              label: "GitHub",
-              url: "https://github.com/xjarifx/Ecommerce-Frontend",
-            },
-            {
-              label: "Live Preview",
-              url: "https://ecommerce-frontend-seven-snowy.vercel.app/",
-            },
+            { label: "GitHub", url: "https://github.com/xjarifx/Ecommerce-Frontend" },
+            { label: "Live Preview", url: "https://ecommerce-frontend-seven-snowy.vercel.app/" },
           ],
         },
+      ],
+      moreItems: [
         {
           title: "Slack (Frontend)",
           description:
             "A modern, modular Next.js landing page inspired by Slack, built with TypeScript, Tailwind CSS, and reusable components.",
-          highlights: [
-            "Architected component-driven design system with reusable UI components",
-            "Achieved 100% TypeScript coverage with strict type safety and interface-driven development",
-            "Optimized build performance and maintained 90+ Lighthouse scores across all metrics",
-          ],
-          techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
           links: [
-            {
-              label: "GitHub",
-              url: "https://github.com/xjarifx/slack-landing-page",
-            },
-            {
-              label: "Live Preview",
-              url: "https://slack-landing-page-two.vercel.app/",
-            },
+            { label: "GitHub", url: "https://github.com/xjarifx/slack-landing-page" },
+            { label: "Live Preview", url: "https://slack-landing-page-two.vercel.app/" },
           ],
         },
         {
           title: "Dashboard (Frontend)",
           description:
-            "A responsive analytics dashboard with data visualization, real-time metrics, and interactive charts for monitoring application performance and user engagement.",
-          highlights: [
-            "Built responsive dashboard with interactive charts and real-time data visualization",
-            "Implemented modular component architecture with TypeScript for type safety and maintainability",
-            "Deployed to production with optimized performance and responsive design across all devices",
-          ],
-          techStack: ["React", "TypeScript", "Tailwind CSS"],
+            "A responsive analytics dashboard with data visualization, real-time metrics, and interactive charts.",
           links: [
-            {
-              label: "GitHub",
-              url: "https://github.com/xjarifx/Dashboard-Frontend",
-            },
-            {
-              label: "Live Preview",
-              url: "https://dashboard-frontend-sigma-inky.vercel.app/dashboard",
-            },
+            { label: "GitHub", url: "https://github.com/xjarifx/Dashboard-Frontend" },
+            { label: "Live Preview", url: "https://dashboard-frontend-sigma-inky.vercel.app/dashboard" },
           ],
         },
         {
           title: "Flower Shop (Frontend)",
           description:
             "A modern, responsive flower shop frontend with product showcases, category filtering, cart preview, and smooth mobile-first UI.",
-          highlights: [
-            "Developed responsive multi-page application with gallery and service showcase",
-            "Optimized performance using WebP conversion and image prefetching strategies",
-            "Implemented type-safe components with React 19 and modern CSS styling",
-          ],
-          techStack: ["React", "TypeScript", "Tailwind CSS"],
           links: [
-            {
-              label: "GitHub",
-              url: "https://github.com/xjarifx/flower-shop",
-            },
-            {
-              label: "Live Preview",
-              url: "https://flower-shop-mauve-tau.vercel.app/",
-            },
+            { label: "GitHub", url: "https://github.com/xjarifx/flower-shop" },
+            { label: "Live Preview", url: "https://flower-shop-mauve-tau.vercel.app/" },
           ],
         },
         {
           title: "Game Shop (Frontend)",
           description:
             "A parallax website inspired by the Firewatch game landing page, focused on layered scrolling visuals and immersive storytelling.",
-          highlights: [
-            "Built 7-layer parallax scene with custom mouse-tracking hook and cinematic animations",
-            "Developed reusable TypeScript components with responsive design and embedded media",
-            "Implemented accessibility features including motion-reduction and semantic HTML",
-          ],
-          techStack: ["React", "TypeScript", "Tailwind CSS"],
           links: [
-            {
-              label: "GitHub",
-              url: "https://github.com/xjarifx/parallax",
-            },
-            {
-              label: "Live Preview",
-              url: "https://parallax-nine-gilt.vercel.app/",
-            },
+            { label: "GitHub", url: "https://github.com/xjarifx/parallax" },
+            { label: "Live Preview", url: "https://parallax-nine-gilt.vercel.app/" },
           ],
         },
       ],

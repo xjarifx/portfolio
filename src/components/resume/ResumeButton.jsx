@@ -4,7 +4,7 @@
 export const ResumeButton = ({ className }) => {
   return (
     <a
-      href="/resume/Resume.pdf"
+      href="https://docs.google.com/document/d/1Is5jUhyEGggU1dsqlMcQj3Q3tldcAdldZ-xW4WpTKDk/edit?usp=sharing"
       target="_blank"
       rel="noreferrer noopener"
       className={className}

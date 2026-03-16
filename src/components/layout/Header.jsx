@@ -1,3 +1,11 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faGithub,
+  faLinkedin,
+  faXTwitter,
+  faInstagram,
+  faMedium,
+} from "@fortawesome/free-brands-svg-icons";
 import { useEmailCopy } from "../../hooks/useEmailCopy";
 import { Button } from "../ui/Button";
 import { ResumeButton } from "../resume/ResumeButton";
@@ -190,134 +198,58 @@ const ContactSection = ({
 /**
  * SocialLinks sub-component
  */
-const SocialLinks = ({ metadata, theme }) => {
-  const socialIcons = {
-    github: (
-      <svg
-        className="h-6 w-6"
-        fill="currentColor"
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-      >
-        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-      </svg>
-    ),
-    linkedin: (
-      <svg
-        className="h-6 w-6"
-        fill="currentColor"
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-      >
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-      </svg>
-    ),
-    leetcode: (
-      <svg
-        className="h-6 w-6"
-        fill="currentColor"
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-      >
-        <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z" />
-      </svg>
-    ),
-    medium: (
-      <svg
-        className="h-6 w-6"
-        fill="currentColor"
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-      >
-        <path d="M4.21 0A4.201 4.201 0 0 0 0 4.21v15.58A4.201 4.201 0 0 0 4.21 24h15.58A4.201 4.201 0 0 0 24 19.79v-1.093c-.137.013-.278.02-.422.02-2.577 0-4.027-2.146-4.09-4.832a7.592 7.592 0 0 1 .022-.708c.093-1.186.475-2.241 1.105-3.022a3.885 3.885 0 0 1 1.395-1.1c.468-.237 1.127-.367 1.664-.367h.023c.101 0 .202.004.303.01V4.211A4.201 4.201 0 0 0 19.79 0Zm.198 5.583h4.165l3.588 8.435 3.59-8.435h3.864v.146l-.019.004c-.705.16-1.063.397-1.063 1.254h-.003l.003 10.274c.06.676.424.885 1.063 1.03l.02.004v.145h-4.923v-.145l.019-.005c.639-.144.994-.353 1.054-1.03V7.267l-4.745 11.15h-.261L6.15 7.569v9.445c0 .857.358 1.094 1.063 1.253l.02.004v.147H4.405v-.147l.019-.004c.705-.16 1.065-.397 1.065-1.253V6.987c0-.857-.358-1.094-1.064-1.254l-.018-.004zm19.25 3.668c-1.086.023-1.733 1.323-1.813 3.124H24V9.298a1.378 1.378 0 0 0-.342-.047z" />
-      </svg>
-    ),
-    resume: (
-      <svg
-        className="h-6 w-6"
-        fill="currentColor"
-        viewBox="0 0 27 27"
-        aria-hidden="true"
-      >
-        <path d="M16.41 2.91c-.43-.43-1-.66-1.6-.66H6.75c-1.24 0-2.25 1.01-2.25 2.25v18c0 1.24 1 2.25 2.24 2.25h12.76c1.24 0 2.25-1.01 2.25-2.25V9.93c0-.6-.24-1.17-.66-1.59l-5.42-5.43zM16.88 20.25h-6.76c-.62 0-1.12-.51-1.12-1.12s.51-1.12 1.12-1.12h6.76c.62 0 1.12.51 1.12 1.12s-.51 1.12-1.12 1.12zm0-4.5h-6.76c-.62 0-1.12-.51-1.12-1.12s.51-1.12 1.12-1.12h6.76c.62 0 1.12.51 1.12 1.12s-.51 1.12-1.12 1.12zm-2.25-6.75V3.94l5.62 5.62h-4.5c-.62 0-1.12-.51-1.12-1.12z" />
-      </svg>
-    ),
-  };
+const leetcodeIcon = (
+  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z" />
+  </svg>
+);
 
-  return (
-    <ul className="flex items-center mt-8" aria-label="Social media">
-      {metadata.social.github && (
-        <li className="mr-5 shrink-0 text-sm">
+const fiverrIcon = (
+  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M23.004 15.588a.995.995 0 1 0 .002-1.99.995.995 0 0 0-.002 1.99zm-.996-3.705h-.85c-.546 0-.84.41-.84 1.092v2.466h-1.61v-3.558h-.684c-.547 0-.84.41-.84 1.092v2.466h-1.61v-4.874h1.61v.74c.264-.574.626-.74 1.163-.74h1.972v.74c.264-.574.625-.74 1.162-.74h.527v1.316zm-6.786 1.501h-3.359c.088.648.527.97 1.21.97.508 0 .86-.176 1.016-.536h1.985c-.362 1.278-1.484 2.043-3.03 2.043-1.876 0-3.067-1.18-3.067-2.994 0-1.795 1.21-2.994 3.067-2.994 1.915 0 3.086 1.219 3.086 2.994 0 .176-.02.351-.04.517h.132zm-3.339-.936h1.738c-.117-.595-.517-.907-1.084-.907-.606 0-1.006.322-1.094.907h.44zm-3.943 2.38h-1.822l-1.504-1.96v1.96H3.005V9.423h1.609v3.89l1.426-1.784h1.876l-1.826 2.193 1.855 2.606zM2.45 8.42a.936.936 0 0 1-.933.938.936.936 0 0 1-.937-.938.94.94 0 0 1 .937-.938.94.94 0 0 1 .933.938zM1.517 9.423H3.13v4.874H1.517V9.423zM24 4.5H0v15h24V4.5z" />
+  </svg>
+);
+
+const socialLinks = [
+  { key: "github",    label: "GitHub",    icon: faGithub,   custom: null        },
+  { key: "linkedin",  label: "LinkedIn",  icon: faLinkedin, custom: null        },
+  { key: "leetcode",  label: "LeetCode",  icon: null,       custom: leetcodeIcon },
+  { key: "medium",    label: "Medium",    icon: faMedium,   custom: null        },
+  { key: "fiverr",    label: "Fiverr",    icon: null,       custom: fiverrIcon  },
+  { key: "x",         label: "X",         icon: faXTwitter, custom: null        },
+  { key: "instagram", label: "Instagram", icon: faInstagram,custom: null        },
+];
+
+const SocialLinks = ({ metadata, theme }) => (
+  <ul className="flex flex-wrap items-center gap-4 mt-8" aria-label="Social media">
+    {socialLinks.map(({ key, label, icon, custom }) =>
+      metadata.social[key] ? (
+        <li key={key} className="shrink-0">
           <a
             className={`block ${theme.colors.text} ${theme.colors.accentHover} transition-colors`}
-            href={metadata.social.github}
+            href={metadata.social[key]}
             target="_blank"
             rel="noreferrer noopener"
-            aria-label="GitHub (opens in a new tab)"
-            title="GitHub"
+            aria-label={`${label} (opens in a new tab)`}
+            title={label}
           >
-            <span className="sr-only">GitHub</span>
-            {socialIcons.github}
+            <span className="sr-only">{label}</span>
+            {icon ? <FontAwesomeIcon icon={icon} className="h-5 w-5" /> : custom}
           </a>
         </li>
-      )}
-      {metadata.social.linkedin && (
-        <li className="mr-5 shrink-0 text-sm">
-          <a
-            className={`block ${theme.colors.text} ${theme.colors.accentHover} transition-colors`}
-            href={metadata.social.linkedin}
-            target="_blank"
-            rel="noreferrer noopener"
-            aria-label="LinkedIn (opens in a new tab)"
-            title="LinkedIn"
-          >
-            <span className="sr-only">LinkedIn</span>
-            {socialIcons.linkedin}
-          </a>
-        </li>
-      )}
-      {metadata.social.leetcode && (
-        <li className="mr-5 shrink-0 text-sm">
-          <a
-            className={`block ${theme.colors.text} ${theme.colors.accentHover} transition-colors`}
-            href={metadata.social.leetcode}
-            target="_blank"
-            rel="noreferrer noopener"
-            aria-label="LeetCode (opens in a new tab)"
-            title="LeetCode"
-          >
-            <span className="sr-only">LeetCode</span>
-            {socialIcons.leetcode}
-          </a>
-        </li>
-      )}
-      {metadata.social.medium && (
-        <li className="mr-5 shrink-0 text-sm">
-          <a
-            className={`block ${theme.colors.text} ${theme.colors.accentHover} transition-colors`}
-            href={metadata.social.medium}
-            target="_blank"
-            rel="noreferrer noopener"
-            aria-label="Medium (opens in a new tab)"
-            title="Medium"
-          >
-            <span className="sr-only">Medium</span>
-            {socialIcons.medium}
-          </a>
-        </li>
-      )}
-      <li className="mr-5 shrink-0 text-sm">
-        <a
-          className="inline-block rounded-md border border-purple-400 px-2 py-1 text-purple-400 transition-colors hover:bg-purple-400 hover:text-white"
-          href="/resume/Resume.pdf"
-          target="_blank"
-          rel="noreferrer noopener"
-          aria-label="Resume (opens PDF in new tab)"
-          title="Resume"
-        >
-          Resume
-        </a>
-      </li>
-    </ul>
-  );
-};
+      ) : null
+    )}
+    <li className="shrink-0">
+      <a
+        className="inline-block rounded-md border border-purple-400 px-2 py-1 text-purple-400 transition-colors hover:bg-purple-400 hover:text-white"
+        href="https://docs.google.com/document/d/1Is5jUhyEGggU1dsqlMcQj3Q3tldcAdldZ-xW4WpTKDk/edit?usp=sharing"
+        target="_blank"
+        rel="noreferrer noopener"
+        aria-label="Resume (opens PDF in new tab)"
+        title="Resume"
+      >
+        Resume
+      </a>
+    </li>
+  </ul>
+);

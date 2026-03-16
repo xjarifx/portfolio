@@ -18,7 +18,18 @@ export const MainContent = ({ sections, theme, config }) => {
       case "text":
         return <TextSection content={section.content} />;
       case "project":
-        return <ProjectSection items={section.items} theme={theme} />;
+        return <ProjectSection items={section.items} moreItems={section.moreItems} theme={theme} />;
+      case "techstack":
+        return (
+          <div className="space-y-2">
+            {section.categories.map((cat, i) => (
+              <div key={i} className="flex flex-wrap gap-x-2 text-sm">
+                <span className={`font-medium ${theme.colors.textPrimary} shrink-0`}>{cat.label}:</span>
+                <span className={theme.colors.textMuted}>{cat.skills.join(', ')}</span>
+              </div>
+            ))}
+          </div>
+        );
       case "article":
         return <ArticleSection items={section.items} theme={theme} />;
       case "certification":

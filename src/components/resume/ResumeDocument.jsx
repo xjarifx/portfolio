@@ -126,9 +126,12 @@ const styles = StyleSheet.create({
  */
 export const ResumeDocument = ({ metadata, sections }) => {
   const summary = sections?.find((s) => s.id === "summary");
+  const techstack = sections?.find((s) => s.id === "techstack");
   const projects = sections?.find((s) => s.id === "projects");
   const certifications = sections?.find((s) => s.id === "certifications");
   const education = sections?.find((s) => s.id === "education");
+
+  const allProjects = [...(projects?.items || []), ...(projects?.moreItems || [])];
 
   return (
     <Document
@@ -140,29 +143,14 @@ export const ResumeDocument = ({ metadata, sections }) => {
         <View style={styles.header}>
           <Text style={styles.name}>{metadata?.name}</Text>
           <Text style={styles.title}>{metadata?.title}</Text>
-          {metadata?.tagline && (
-            <Text style={styles.tagline}>{metadata.tagline}</Text>
-          )}
           <View style={styles.contact}>
             <Text>
-              {[metadata?.email, metadata?.phone]
-                .filter(Boolean)
-                .join(" · ")}
-              {metadata?.social?.linkedin && (
-                <Text>
-                  {" · "}
-                  <Link src={metadata.social.linkedin} style={styles.link}>
-                    LinkedIn
-                  </Link>
-                </Text>
-              )}
+              {[metadata?.email, metadata?.phone].filter(Boolean).join(" · ")}
               {metadata?.social?.github && (
-                <Text>
-                  {" · "}
-                  <Link src={metadata.social.github} style={styles.link}>
-                    GitHub
-                  </Link>
-                </Text>
+                <Text>{" · "}<Link src={metadata.social.github} style={styles.link}>GitHub</Link></Text>
+              )}
+              {metadata?.social?.linkedin && (
+                <Text>{" · "}<Link src={metadata.social.linkedin} style={styles.link}>LinkedIn</Link></Text>
               )}
             </Text>
           </View>
@@ -173,50 +161,45 @@ export const ResumeDocument = ({ metadata, sections }) => {
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Summary</Text>
             {summary.content.map((para, i) => (
-              <Text key={i} style={styles.paragraph}>
-                {para}
+              <Text key={i} style={styles.paragraph}>{para}</Text>
+            ))}
+          </View>
+        )}
+
+        {/* Tech Stack */}
+        {techstack?.categories?.length > 0 && (
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Tech Stack</Text>
+            {techstack.categories.map((cat, i) => (
+              <Text key={i} style={[styles.paragraph, { marginBottom: 3 }]}>
+                <Text style={{ fontWeight: "bold", color: "#111827" }}>{cat.label}: </Text>
+                {cat.skills.join(", ")}
               </Text>
             ))}
           </View>
         )}
 
         {/* Projects */}
-        {projects?.items?.length > 0 && (
+        {allProjects.length > 0 && (
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Projects</Text>
-            {projects.items.map((project, i) => (
+            {allProjects.map((project, i) => (
               <View key={i} style={styles.project}>
-                <Text style={styles.projectTitle}>{project.title}</Text>
-                {project.techStack?.length > 0 && (
-                  <Text style={styles.projectMeta}>
-                    {project.techStack.join(" · ")}
-                  </Text>
-                )}
+                <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+                  <Text style={styles.projectTitle}>{project.title}</Text>
+                  {project.links?.length > 0 && (
+                    <Text style={{ fontSize: 9 }}>
+                      {project.links.map((link, j) => (
+                        <Text key={j}>
+                          {j > 0 && " · "}
+                          <Link src={link.url} style={styles.link}>{link.label}</Link>
+                        </Text>
+                      ))}
+                    </Text>
+                  )}
+                </View>
                 {project.description && (
-                  <Text style={styles.projectDescription}>
-                    {project.description}
-                  </Text>
-                )}
-                {project.highlights?.length > 0 && (
-                  <View style={styles.bulletList}>
-                    {project.highlights.map((h, j) => (
-                      <Text key={j} style={styles.bulletItem}>
-                        • {h}
-                      </Text>
-                    ))}
-                  </View>
-                )}
-                {project.links?.length > 0 && (
-                  <Text style={{ fontSize: 9, marginTop: 2 }}>
-                    {project.links.map((link, j) => (
-                      <Text key={j}>
-                        {j > 0 && " · "}
-                        <Link src={link.url} style={styles.link}>
-                          {link.label}
-                        </Link>
-                      </Text>
-                    ))}
-                  </Text>
+                  <Text style={styles.projectDescription}>{project.description}</Text>
                 )}
               </View>
             ))}
@@ -247,14 +230,8 @@ export const ResumeDocument = ({ metadata, sections }) => {
               <View key={i} style={styles.certItem}>
                 <Text style={styles.certName}>{cert.name}</Text>
                 <Text style={styles.certMeta}>
-                  {cert.issuer}
-                  {cert.date ? ` · ${cert.date}` : ""}
+                  {cert.issuer}{cert.date ? ` · ${cert.date}` : ""}
                 </Text>
-                {cert.description && (
-                  <Text style={[styles.paragraph, { marginTop: 4 }]}>
-                    {cert.description}
-                  </Text>
-                )}
               </View>
             ))}
           </View>
