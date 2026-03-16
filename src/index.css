@@ -1,9 +1,8 @@
 @import "tailwindcss";
 
-/* Light theme base — no gradients, solid surfaces. Mobile-first. */
 html {
   scroll-behavior: smooth;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 body {
@@ -16,34 +15,17 @@ body {
 
 :root {
   --color-bg: #f8fafc;
-  --color-surface: #f1f5f9;
-  --color-border: #cbd5e1;
+  --color-surface: #ffffff;
+  --color-border: #e2e8f0;
   --color-text: #475569;
   --color-text-primary: #0f172a;
   --color-accent: #7c3aed;
-  --color-accent-hover: #6d28d9;
+  --color-accent-light: #ede9fe;
 }
 
 @media print {
-  @page {
-    size: A4;
-    margin: 14mm;
-  }
-
-  html,
-  body {
-    background: #ffffff;
-    color: #111827;
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
-  }
-
-  .no-print {
-    display: none !important;
-  }
-
-  a {
-    color: inherit !important;
-    text-decoration: none !important;
-  }
+  @page { size: A4; margin: 14mm; }
+  html, body { background: #fff; color: #111827; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .no-print { display: none !important; }
+  a { color: inherit !important; text-decoration: none !important; }
 }
