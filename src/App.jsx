@@ -50,7 +50,7 @@ function useActiveSection(ids) {
 // ─── Small UI pieces ─────────────────────────────────────────────────────────
 
 const Badge = ({ children }) => (
-  <span className="inline-flex items-center rounded-full bg-gray-800 border border-gray-700 px-3 py-1 text-sm font-medium text-purple-300 leading-5">
+  <span className="inline-flex items-center rounded-full bg-violet-100 border border-violet-200 px-3 py-1 text-sm font-medium text-violet-700 leading-5">
     {children}
   </span>
 );
@@ -60,8 +60,8 @@ const ExtLink = ({ href, children, label, pill = false }) => (
     href={href} target="_blank" rel="noreferrer noopener"
     aria-label={label || `${children} (opens in a new tab)`}
     className={pill
-      ? "inline-flex items-center gap-1 rounded-md border border-gray-600 bg-gray-800 px-2.5 py-1 text-sm font-medium text-gray-300 transition-colors hover:text-purple-300"
-      : "inline-flex items-center gap-1 font-medium text-gray-100 transition-colors hover:text-purple-300 text-lg leading-tight"
+      ? "inline-flex items-center gap-1 rounded-md border border-slate-300 bg-slate-100 px-2.5 py-1 text-sm font-medium text-slate-600 transition-colors hover:text-violet-700"
+      : "inline-flex items-center gap-1 font-medium text-slate-800 transition-colors hover:text-violet-700 text-lg leading-tight"
     }
   >
     {children}
@@ -92,8 +92,8 @@ const TechStackSection = ({ categories }) => (
   <div className="space-y-2">
     {categories.map((cat, i) => (
       <div key={i} className="flex flex-wrap gap-x-2 text-sm">
-        <span className="font-medium text-gray-100 shrink-0">{cat.label}:</span>
-        <span className="text-gray-500">{cat.skills.join(", ")}</span>
+        <span className="font-medium text-slate-800 shrink-0">{cat.label}:</span>
+        <span className="text-slate-400">{cat.skills.join(", ")}</span>
       </div>
     ))}
   </div>
@@ -104,7 +104,7 @@ const ProjectItem = ({ project }) => (
     <Card>
       <div className="z-10">
         <div className="flex items-center justify-between gap-3 flex-wrap">
-          <h3 className="leading-tight font-medium text-gray-100 text-lg">{project.title}</h3>
+          <h3 className="leading-tight font-medium text-slate-800 text-lg">{project.title}</h3>
           {project.links?.length > 0 && (
             <div className="flex gap-2">
               {project.links.map((link, i) => (
@@ -116,7 +116,7 @@ const ProjectItem = ({ project }) => (
           )}
         </div>
         {project.description && (
-          <p className="mt-1 text-sm text-gray-400">{project.description}</p>
+          <p className="mt-1 text-sm text-slate-500">{project.description}</p>
         )}
       </div>
     </Card>
@@ -134,7 +134,7 @@ const ProjectSection = ({ items, moreItems }) => {
         <div className="mt-4">
           <button
             onClick={() => setOpen((v) => !v)}
-            className="text-sm font-medium text-purple-300 hover:underline flex items-center gap-1"
+            className="text-sm font-medium text-violet-700 hover:underline flex items-center gap-1"
             aria-expanded={open}
           >
             {open ? "Hide" : "More Projects"}
@@ -157,7 +157,7 @@ const ArticleSection = ({ items }) => (
       <li key={i} className="mb-8 sm:mb-10">
         <Card>
           <div className="z-10">
-            <h3 className="leading-snug font-medium text-gray-100">
+            <h3 className="leading-snug font-medium text-slate-800">
               <ExtLink href={article.url} label={`${article.title} (opens in a new tab)`}>
                 {article.title}
               </ExtLink>
@@ -185,7 +185,7 @@ const CertificationSection = ({ items }) => (
       <li key={i} className="mb-8 sm:mb-10">
         <Card>
           <div className="z-10">
-            <h3 className="leading-snug font-medium text-gray-100 text-lg">
+            <h3 className="leading-snug font-medium text-slate-800 text-lg">
               <ExtLink href={cert.credentialUrl} label={`${cert.name} from ${cert.issuer} (opens in a new tab)`}>
                 {cert.name}{cert.issuer && <> · <span>{cert.issuer}</span></>}
               </ExtLink>
@@ -210,8 +210,8 @@ const EducationSection = ({ items }) => (
       <li key={i} className="mb-8 sm:mb-10">
         <Card>
           <div className="relative z-10 space-y-1.5">
-            <h3 className="font-medium text-gray-100 text-lg leading-tight">{entry.degree}</h3>
-            <p className="text-base text-gray-400 leading-relaxed">{entry.institution}</p>
+            <h3 className="font-medium text-slate-800 text-lg leading-tight">{entry.degree}</h3>
+            <p className="text-base text-slate-500 leading-relaxed">{entry.institution}</p>
           </div>
         </Card>
       </li>
@@ -234,25 +234,25 @@ function renderSection(section) {
 // ─── Social icons ─────────────────────────────────────────────────────────────
 
 const LeetcodeIcon = () => (
-  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+  <svg className="h-7 w-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
     <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z" />
   </svg>
 );
 
 const FiverrIcon = () => (
-  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M23.004 15.588a.995.995 0 1 0 .002-1.99.995.995 0 0 0-.002 1.99zm-.996-3.705h-.85c-.546 0-.84.41-.84 1.092v2.466h-1.61v-3.558h-.684c-.547 0-.84.41-.84 1.092v2.466h-1.61v-4.874h1.61v.74c.264-.574.626-.74 1.163-.74h1.972v.74c.264-.574.625-.74 1.162-.74h.527v1.316zm-6.786 1.501h-3.359c.088.648.527.97 1.21.97.508 0 .86-.176 1.016-.536h1.985c-.362 1.278-1.484 2.043-3.03 2.043-1.876 0-3.067-1.18-3.067-2.994 0-1.795 1.21-2.994 3.067-2.994 1.915 0 3.086 1.219 3.086 2.994 0 .176-.02.351-.04.517h.132zm-3.339-.936h1.738c-.117-.595-.517-.907-1.084-.907-.606 0-1.006.322-1.094.907h.44zm-3.943 2.38h-1.822l-1.504-1.96v1.96H3.005V9.423h1.609v3.89l1.426-1.784h1.876l-1.826 2.193 1.855 2.606zM2.45 8.42a.936.936 0 0 1-.933.938.936.936 0 0 1-.937-.938.94.94 0 0 1 .937-.938.94.94 0 0 1 .933.938zM1.517 9.423H3.13v4.874H1.517V9.423zM24 4.5H0v15h24V4.5z" />
+  <svg className="h-7 w-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" role="img">
+    <path d="M23.004 15.588a.995.995 0 1 0 .002-1.99.995.995 0 0 0-.002 1.99zm-.996-3.705h-.85c-.546 0-.84.41-.84 1.092v2.466h-1.61v-3.558h-.684c-.547 0-.84.41-.84 1.092v2.466h-1.61v-4.874h1.61v.74c.264-.574.626-.74 1.163-.74h1.972v.74c.264-.574.625-.74 1.162-.74h.527v1.316zm-6.786 1.501h-3.359c.088.546.43.858 1.006.858.43 0 .732-.175.83-.487l1.425.4c-.351.848-1.22 1.364-2.255 1.364-1.748 0-2.549-1.355-2.549-2.515 0-1.14.703-2.505 2.45-2.505 1.856 0 2.471 1.384 2.471 2.408 0 .224-.01.37-.02.477zm-1.562-.945c-.04-.42-.342-.81-.889-.81-.508 0-.81.225-.908.81h1.797zM7.508 15.44h1.416l1.767-4.874h-1.62l-.86 2.837-.878-2.837H5.72l1.787 4.874zm-6.6 0H2.51v-3.558h1.524v3.558h1.591v-4.874H2.51v-.302c0-.332.235-.536.606-.536h.918V8.412H2.85c-1.162 0-1.943.712-1.943 1.755v.4H0v1.316h.908v3.558z" />
   </svg>
 );
 
 const SOCIAL = [
-  { key: "github",    label: "GitHub",    icon: <FontAwesomeIcon icon={faGithub} className="h-5 w-5" /> },
-  { key: "linkedin",  label: "LinkedIn",  icon: <FontAwesomeIcon icon={faLinkedin} className="h-5 w-5" /> },
-  { key: "leetcode",  label: "LeetCode",  icon: <LeetcodeIcon /> },
-  { key: "medium",    label: "Medium",    icon: <FontAwesomeIcon icon={faMedium} className="h-5 w-5" /> },
-  { key: "fiverr",    label: "Fiverr",    icon: <FiverrIcon /> },
-  { key: "x",         label: "X",         icon: <FontAwesomeIcon icon={faXTwitter} className="h-5 w-5" /> },
-  { key: "instagram", label: "Instagram", icon: <FontAwesomeIcon icon={faInstagram} className="h-5 w-5" /> },
+  { key: "github",    label: "GitHub",    icon: <FontAwesomeIcon icon={faGithub} className="h-7 w-7" />,    bg: "bg-gray-900 text-white hover:bg-gray-700" },
+  { key: "linkedin",  label: "LinkedIn",  icon: <FontAwesomeIcon icon={faLinkedin} className="h-7 w-7" />,  bg: "bg-[#0A66C2] text-white hover:bg-[#0958a8]" },
+  { key: "leetcode",  label: "LeetCode",  icon: <LeetcodeIcon />,                                            bg: "bg-[#FFA116] text-white hover:bg-[#e89110]" },
+  { key: "medium",    label: "Medium",    icon: <FontAwesomeIcon icon={faMedium} className="h-7 w-7" />,    bg: "bg-black text-white hover:bg-gray-800" },
+  { key: "fiverr",    label: "Fiverr",    icon: <FiverrIcon />,                                              bg: "bg-[#1DBF73] text-white hover:bg-[#19a864]" },
+  { key: "x",         label: "X",         icon: <FontAwesomeIcon icon={faXTwitter} className="h-7 w-7" />,  bg: "bg-black text-white hover:bg-gray-800" },
+  { key: "instagram", label: "Instagram", icon: <FontAwesomeIcon icon={faInstagram} className="h-7 w-7" />, bg: "bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white" },
 ];
 
 // ─── App ──────────────────────────────────────────────────────────────────────
@@ -270,20 +270,20 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-950 text-gray-400">
+    <div className="min-h-screen bg-slate-50 text-slate-500">
       <div className="mx-auto min-h-screen max-w-screen-xl px-4 py-8 sm:px-6 sm:py-10 md:px-12 md:py-16 lg:px-24 lg:py-0">
         <div className="lg:flex lg:justify-between lg:gap-4">
 
           {/* ── Sidebar ── */}
           <header className="lg:sticky lg:top-0 lg:flex lg:h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-[5vh]">
             <div>
-              <h1 className="text-2xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-4xl">
+              <h1 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl md:text-4xl">
                 <a href="#summary" onClick={(e) => scrollTo(e, "summary")}
-                  className="cursor-pointer transition-colors hover:text-purple-300">
+                  className="cursor-pointer transition-colors hover:text-violet-700">
                   {metadata.name}
                 </a>
               </h1>
-              <h2 className="mt-3 text-lg font-medium tracking-tight text-gray-100 sm:text-xl">
+              <h2 className="mt-3 text-lg font-medium tracking-tight text-slate-800 sm:text-xl">
                 {metadata.title}
               </h2>
               <p className="mt-4 max-w-xs text-base leading-relaxed">{metadata.tagline}</p>
@@ -293,35 +293,35 @@ export default function App() {
                 <div className="mt-3 space-y-4">
                   {metadata.email && (
                     <div>
-                      <p className="text-sm text-gray-500">Email</p>
+                      <p className="text-sm text-slate-400">Email</p>
                       <div className="mt-1 grid grid-cols-[1fr_auto_auto] items-center gap-x-2">
                         <a href={`mailto:${metadata.email}`}
-                          className="min-w-0 text-base font-medium text-gray-100 transition-colors hover:text-purple-300">
+                          className="min-w-0 text-base font-medium text-slate-800 transition-colors hover:text-violet-700">
                           {metadata.email}
                         </a>
                         <button onClick={copyEmail}
-                          className="shrink-0 rounded border border-gray-600 bg-gray-800 px-2 py-1 text-sm text-gray-300 hover:text-purple-300 transition-colors"
+                          className="shrink-0 rounded border border-slate-300 bg-slate-100 px-2 py-1 text-sm text-slate-600 hover:text-violet-700 transition-colors"
                           aria-label={`Copy email ${metadata.email}`}>
                           Copy
                         </button>
-                        {emailCopied && <span className="text-sm text-purple-300" aria-live="polite">Copied!</span>}
+                        {emailCopied && <span className="text-sm text-violet-700" aria-live="polite">Copied!</span>}
                       </div>
                     </div>
                   )}
                   {metadata.phone && (
                     <div>
-                      <p className="text-sm text-gray-500">Phone</p>
+                      <p className="text-sm text-slate-400">Phone</p>
                       <div className="mt-1 grid grid-cols-[1fr_auto_auto] items-center gap-x-2">
                         <a href={`tel:${metadata.phone.replace(/\s+/g, "")}`}
-                          className="min-w-0 text-base font-medium text-gray-100 transition-colors hover:text-purple-300">
+                          className="min-w-0 text-base font-medium text-slate-800 transition-colors hover:text-violet-700">
                           {metadata.phone}
                         </a>
                         <button onClick={copyPhone}
-                          className="shrink-0 rounded border border-gray-600 bg-gray-800 px-2 py-1 text-sm text-gray-300 hover:text-purple-300 transition-colors"
+                          className="shrink-0 rounded border border-slate-300 bg-slate-100 px-2 py-1 text-sm text-slate-600 hover:text-violet-700 transition-colors"
                           aria-label={`Copy phone ${metadata.phone}`}>
                           Copy
                         </button>
-                        {phoneCopied && <span className="text-sm text-purple-300" aria-live="polite">Copied!</span>}
+                        {phoneCopied && <span className="text-sm text-violet-700" aria-live="polite">Copied!</span>}
                       </div>
                     </div>
                   )}
@@ -337,13 +337,13 @@ export default function App() {
                         onClick={(e) => scrollTo(e, s.id)}>
                         <span className={`nav-indicator mr-4 h-px transition-all duration-300 ${
                           active === s.id
-                            ? "w-12 sm:w-16 bg-purple-400"
-                            : "w-6 sm:w-8 bg-gray-600 group-hover:w-12 group-hover:sm:w-16 group-hover:bg-purple-400"
+                            ? "w-12 sm:w-16 bg-violet-600"
+                            : "w-6 sm:w-8 bg-slate-300 group-hover:w-12 group-hover:sm:w-16 group-hover:bg-violet-600"
                         }`} />
                         <span className={`text-sm font-semibold uppercase tracking-widest transition-colors duration-300 ${
                           active === s.id
-                            ? "text-gray-100"
-                            : "text-gray-500 group-hover:text-gray-100"
+                            ? "text-slate-900"
+                            : "text-slate-400 group-hover:text-slate-900"
                         }`}>
                           {s.title}
                         </span>
@@ -355,12 +355,12 @@ export default function App() {
             </div>
 
             {/* Social links */}
-            <ul className="flex flex-wrap items-center gap-4 mt-8" aria-label="Social media">
-              {SOCIAL.map(({ key, label, icon }) =>
+            <ul className="flex flex-wrap items-center gap-3 mt-8" aria-label="Social media">
+              {SOCIAL.map(({ key, label, icon, bg }) =>
                 metadata.social[key] ? (
                   <li key={key} className="shrink-0">
                     <a href={metadata.social[key]} target="_blank" rel="noreferrer noopener"
-                      className="block text-gray-400 transition-colors hover:text-purple-300"
+                      className={`flex items-center justify-center w-10 h-10 rounded-xl transition-opacity hover:opacity-85 ${bg}`}
                       aria-label={`${label} (opens in a new tab)`} title={label}>
                       <span className="sr-only">{label}</span>
                       {icon}
@@ -371,9 +371,12 @@ export default function App() {
               <li className="shrink-0">
                 <a href="https://docs.google.com/document/d/1Is5jUhyEGggU1dsqlMcQj3Q3tldcAdldZ-xW4WpTKDk/edit?usp=sharing"
                   target="_blank" rel="noreferrer noopener"
-                  className="inline-block rounded-md border border-purple-400 px-2 py-1 text-purple-400 transition-colors hover:bg-purple-400 hover:text-white"
-                  aria-label="Resume (opens in a new tab)">
-                  Resume
+                  className="flex items-center justify-center w-10 h-10 rounded-xl bg-violet-600 text-white transition-opacity hover:opacity-85"
+                  aria-label="Resume (opens in a new tab)" title="Resume">
+                  <span className="sr-only">Resume</span>
+                  <svg className="h-7 w-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 20V4h5v7h7v9H6zm2-5h8v1.5H8V15zm0-3h8v1.5H8V12zm0-3h4v1.5H8V9z"/>
+                  </svg>
                 </a>
               </li>
             </ul>
@@ -384,8 +387,8 @@ export default function App() {
             {sections.map((section) => (
               <section key={section.id} id={section.id}
                 className="mb-12 sm:mb-16 md:mb-20 lg:mb-24 scroll-mt-16 lg:scroll-mt-24">
-                <div className="sticky top-0 z-20 -mx-4 mb-6 w-[calc(100%+2rem)] bg-gray-950/95 px-4 py-4 sm:-mx-6 sm:w-[calc(100%+3rem)] sm:px-6 md:-mx-12 md:w-[calc(100%+6rem)] md:mb-8 md:px-12 lg:mx-auto lg:mb-10 lg:w-full lg:px-0 lg:py-5">
-                  <h2 className="text-sm font-semibold uppercase tracking-widest text-gray-500">
+                <div className="sticky top-0 z-20 -mx-4 mb-6 w-[calc(100%+2rem)] bg-slate-50/95 px-4 py-4 sm:-mx-6 sm:w-[calc(100%+3rem)] sm:px-6 md:-mx-12 md:w-[calc(100%+6rem)] md:mb-8 md:px-12 lg:mx-auto lg:mb-10 lg:w-full lg:px-0 lg:py-5">
+                  <h2 className="text-sm font-semibold uppercase tracking-widest text-slate-400">
                     {section.title}
                   </h2>
                 </div>
@@ -394,10 +397,10 @@ export default function App() {
             ))}
 
             <footer className="mt-16 sm:mt-24 pt-[1000px]">
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-slate-400">
                 Design inspired by{" "}
                 <a href="https://brittanychiang.com" target="_blank" rel="noreferrer noopener"
-                  className="font-medium text-gray-100 transition-colors hover:text-purple-300">
+                  className="font-medium text-slate-800 transition-colors hover:text-violet-700">
                   Brittany Chiang
                 </a>.
               </p>

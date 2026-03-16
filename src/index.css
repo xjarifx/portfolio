@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
-/* Dark theme base — no gradients, solid surfaces. Mobile-first. */
+/* Light theme base — no gradients, solid surfaces. Mobile-first. */
 html {
   scroll-behavior: smooth;
   font-size: 18px;
 }
 
 body {
-  background-color: #030712;
-  color: #9ca3af;
+  background-color: #f8fafc;
+  color: #475569;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
 }
 
 :root {
-  --color-bg: #030712;
-  --color-surface: #111827;
-  --color-border: #374151;
-  --color-text: #9ca3af;
-  --color-text-primary: #f3f4f6;
-  --color-accent: #c4b5fd;
-  --color-accent-hover: #ddd6fe;
+  --color-bg: #f8fafc;
+  --color-surface: #f1f5f9;
+  --color-border: #cbd5e1;
+  --color-text: #475569;
+  --color-text-primary: #0f172a;
+  --color-accent: #7c3aed;
+  --color-accent-hover: #6d28d9;
 }
 
 @media print {
