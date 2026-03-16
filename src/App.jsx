@@ -262,7 +262,7 @@ export default function App() {
         <div className="lg:flex lg:gap-16">
 
           {/* ── Sidebar ── */}
-          <header className="lg:sticky lg:top-0 lg:flex lg:h-screen lg:w-[380px] lg:shrink-0 lg:flex-col lg:justify-between lg:py-20">
+          <header className="pt-10 lg:sticky lg:top-0 lg:flex lg:h-screen lg:w-[380px] lg:shrink-0 lg:flex-col lg:justify-between lg:pt-20 lg:pb-20">
             <div>
               {/* Avatar placeholder + name */}
               <div className="flex items-center gap-4 mb-6">

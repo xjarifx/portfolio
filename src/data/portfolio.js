@@ -215,8 +215,6 @@ export const portfolio = {
         {
           degree: "B.Sc. in Computer Science and Engineering (CSE)",
           institution: "Daffodil International University",
-          period: "2023–2027",
-          gpa: "3.1/4.0 CGPA",
         },
       ],
     },
