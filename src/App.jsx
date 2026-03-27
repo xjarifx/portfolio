@@ -103,7 +103,7 @@ const ArrowIcon = () => (
 const SectionHeading = ({ children }) => (
   <div className="flex items-center gap-3 mb-8">
     <span className="h-px flex-1 bg-gradient-to-r from-violet-200 to-transparent" />
-    <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-violet-500">{children}</h2>
+    <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-violet-700">{children}</h2>
     <span className="h-px flex-1 bg-gradient-to-l from-violet-200 to-transparent" />
   </div>
 );
@@ -114,7 +114,7 @@ const TechStackSection = ({ categories }) => (
   <div className="grid gap-3">
     {categories.map((cat, i) => (
       <div key={i} className="rounded-md bg-white border border-violet-200 px-4 py-3 flex flex-col gap-1">
-        <span className="text-xs font-bold uppercase tracking-wider text-violet-500">{cat.label}</span>
+        <span className="text-xs font-bold uppercase tracking-wider text-violet-700">{cat.label}</span>
         <span className="text-sm text-slate-600">{cat.skills.join(" · ")}</span>
       </div>
     ))}
@@ -130,7 +130,7 @@ const ProjectItem = ({ project }) => (
           {project.links.map((link, i) => (
             <a key={i} href={link.url} target="_blank" rel="noreferrer noopener"
               aria-label={`${link.label} for ${project.title}`}
-              className="inline-flex items-center gap-1 text-xs font-medium text-violet-600 bg-violet-50 border border-violet-200 rounded-full px-3 py-1">
+              className="inline-flex items-center gap-1 text-xs font-medium text-violet-700 bg-violet-50 border border-violet-200 rounded-full px-3 py-1">
               {link.label}<ArrowIcon />
             </a>
           ))}
@@ -138,7 +138,7 @@ const ProjectItem = ({ project }) => (
       )}
     </div>
     {project.description && (
-      <p className="mt-2 text-sm text-slate-500 leading-relaxed">{project.description}</p>
+      <p className="mt-2 text-sm text-slate-600 leading-relaxed">{project.description}</p>
     )}
   </div>
 );
@@ -151,7 +151,7 @@ const ProjectSection = ({ items, moreItems }) => {
       {moreItems?.length > 0 && (
         <>
           <button onClick={() => setOpen((v) => !v)}
-            className="flex items-center gap-2 text-sm font-medium text-violet-600"
+            className="flex items-center gap-2 text-sm font-medium text-violet-700"
             aria-expanded={open}>
             <span className={`inline-block transition-transform duration-200 ${open ? "rotate-90" : ""}`}>›</span>
             {open ? "Show less" : `${moreItems.length} more projects`}
@@ -175,7 +175,7 @@ const CertificationSection = ({ items }) => (
         <div className="flex items-start justify-between gap-2">
           <div>
             <h3 className="font-semibold text-slate-800 text-sm leading-snug">{cert.name}</h3>
-            {cert.issuer && <p className="mt-0.5 text-xs text-slate-500">{cert.issuer}</p>}
+            {cert.issuer && <p className="mt-0.5 text-xs text-slate-600">{cert.issuer}</p>}
           </div>
           <ArrowIcon />
         </div>
@@ -194,7 +194,7 @@ const EducationSection = ({ items }) => (
     {items.map((entry, i) => (
       <div key={i} className="rounded-lg bg-white border border-violet-200 p-5">
         <h3 className="font-semibold text-slate-800 text-sm leading-tight">{entry.degree}</h3>
-        <p className="mt-1 text-sm text-slate-500">{entry.institution}</p>
+        <p className="mt-1 text-sm text-slate-600">{entry.institution}</p>
       </div>
     ))}
   </div>
@@ -236,10 +236,10 @@ export default function App() {
             <div>
               <div className="mb-6">
                 <h1 className="text-xl font-bold text-slate-900 leading-tight">{metadata.name}</h1>
-                <p className="text-sm text-violet-600 font-medium mt-0.5">{metadata.title}</p>
+                <p className="text-sm text-violet-700 font-medium mt-0.5">{metadata.title}</p>
               </div>
 
-              <p className="text-sm text-slate-500 leading-relaxed mb-8 max-w-xs">{metadata.tagline}</p>
+              <p className="text-sm text-slate-600 leading-relaxed mb-8 max-w-xs">{metadata.tagline}</p>
 
               <div className="space-y-2 mb-10">
                 {metadata.email && (
@@ -249,7 +249,7 @@ export default function App() {
                       {metadata.email}
                     </a>
                     <button onClick={copyEmail}
-                      className="shrink-0 text-xs font-medium px-3 py-2 rounded-md bg-white border border-violet-200 text-slate-500"
+                      className="shrink-0 text-xs font-medium px-3 py-2 rounded-md bg-white border border-violet-200 text-slate-600"
                       aria-label="Copy email">
                       {emailCopied ? "✓" : "Copy"}
                     </button>
@@ -262,7 +262,7 @@ export default function App() {
                       {metadata.phone}
                     </a>
                     <button onClick={copyPhone}
-                      className="shrink-0 text-xs font-medium px-3 py-2 rounded-md bg-white border border-violet-200 text-slate-500"
+                      className="shrink-0 text-xs font-medium px-3 py-2 rounded-md bg-white border border-violet-200 text-slate-600"
                       aria-label="Copy phone">
                       {phoneCopied ? "✓" : "Copy"}
                     </button>
@@ -278,7 +278,7 @@ export default function App() {
                         className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium border ${
                           active === s.id
                             ? "bg-violet-50 text-violet-700 border-violet-200"
-                            : "border-violet-200 text-slate-500"
+                            : "border-violet-200 text-slate-600"
                         }`}>
                         <span className={`h-1.5 w-1.5 rounded-full shrink-0 transition-colors ${active === s.id ? "bg-violet-500" : "bg-slate-300"}`} />
                         {s.title}
@@ -326,9 +326,9 @@ export default function App() {
             ))}
             <div className="h-[1000px]" />
             <footer className="pt-8 border-t border-slate-100">
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-slate-600">
                 Design inspired by{" "}
-                <a href="https://brittanychiang.com" target="_blank" rel="noreferrer noopener" className="text-slate-500 underline">
+                <a href="https://brittanychiang.com" target="_blank" rel="noreferrer noopener" className="text-slate-600 underline">
                   Brittany Chiang
                 </a>.
               </p>
