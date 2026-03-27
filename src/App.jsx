@@ -1,9 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { portfolio } from "./data/portfolio";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faGithub, faLinkedin, faXTwitter,
-} from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faLinkedin, faXTwitter } from "@fortawesome/free-brands-svg-icons";
 
 // ─── Hooks ───────────────────────────────────────────────────────────────────
 
@@ -54,12 +52,6 @@ const LeetcodeIcon = () => (
   </svg>
 );
 
-const FiverrIcon = () => (
-  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M23.004 15.588a.995.995 0 1 0 .002-1.99.995.995 0 0 0-.002 1.99zm-.996-3.705h-.85c-.546 0-.84.41-.84 1.092v2.466h-1.61v-3.558h-.684c-.547 0-.84.41-.84 1.092v2.466h-1.61v-4.874h1.61v.74c.264-.574.626-.74 1.163-.74h1.972v.74c.264-.574.625-.74 1.162-.74h.527v1.316zm-6.786 1.501h-3.359c.088.546.43.858 1.006.858.43 0 .732-.175.83-.487l1.425.4c-.351.848-1.22 1.364-2.255 1.364-1.748 0-2.549-1.355-2.549-2.515 0-1.14.703-2.505 2.45-2.505 1.856 0 2.471 1.384 2.471 2.408 0 .224-.01.37-.02.477zm-1.562-.945c-.04-.42-.342-.81-.889-.81-.508 0-.81.225-.908.81h1.797zM7.508 15.44h1.416l1.767-4.874h-1.62l-.86 2.837-.878-2.837H5.72l1.787 4.874zm-6.6 0H2.51v-3.558h1.524v3.558h1.591v-4.874H2.51v-.302c0-.332.235-.536.606-.536h.918V8.412H2.85c-1.162 0-1.943.712-1.943 1.755v.4H0v1.316h.908v3.558z" />
-  </svg>
-);
-
 const ResumeIcon = () => (
   <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 20V4h5v7h7v9H6zm2-5h8v1.5H8V15zm0-3h8v1.5H8V12zm0-3h4v1.5H8V9z"/>
@@ -67,13 +59,13 @@ const ResumeIcon = () => (
 );
 
 const SOCIAL = [
-  { key: "github",    label: "GitHub",    icon: <FontAwesomeIcon icon={faGithub} className="h-5 w-5" /> },
-  { key: "linkedin",  label: "LinkedIn",  icon: <FontAwesomeIcon icon={faLinkedin} className="h-5 w-5" /> },
-  { key: "x",         label: "X",         icon: <FontAwesomeIcon icon={faXTwitter} className="h-5 w-5" /> },
-  { key: "leetcode",  label: "LeetCode",  icon: <LeetcodeIcon /> },
+  { key: "github",   label: "GitHub",   icon: <FontAwesomeIcon icon={faGithub} className="h-5 w-5" /> },
+  { key: "linkedin", label: "LinkedIn", icon: <FontAwesomeIcon icon={faLinkedin} className="h-5 w-5" /> },
+  { key: "x",        label: "X",        icon: <FontAwesomeIcon icon={faXTwitter} className="h-5 w-5" /> },
+  { key: "leetcode", label: "LeetCode", icon: <LeetcodeIcon /> },
 ];
 
-// ─── Small UI pieces ─────────────────────────────────────────────────────────
+// ─── UI pieces ────────────────────────────────────────────────────────────────
 
 const Tag = ({ children }) => (
   <span className="inline-flex items-center rounded-full bg-violet-50 border border-violet-200 px-2.5 py-0.5 text-xs font-medium text-violet-700">
@@ -98,18 +90,10 @@ const SectionHeading = ({ children }) => (
 
 // ─── Section renderers ────────────────────────────────────────────────────────
 
-const TextSection = ({ content }) => (
-  <div className="space-y-4">
-    {content.map((p, i) => (
-      <p key={i} className="text-slate-600 leading-relaxed text-base">{p}</p>
-    ))}
-  </div>
-);
-
 const TechStackSection = ({ categories }) => (
   <div className="grid gap-3">
     {categories.map((cat, i) => (
-      <div key={i} className="rounded-xl bg-white border border-violet-200 px-4 py-3 flex flex-col gap-1">
+      <div key={i} className="rounded-md bg-white border border-violet-200 px-4 py-3 flex flex-col gap-1">
         <span className="text-xs font-bold uppercase tracking-wider text-violet-500">{cat.label}</span>
         <span className="text-sm text-slate-600">{cat.skills.join(" · ")}</span>
       </div>
@@ -118,7 +102,7 @@ const TechStackSection = ({ categories }) => (
 );
 
 const ProjectItem = ({ project }) => (
-  <div className="rounded-2xl bg-white border border-violet-200 p-5">
+  <div className="rounded-lg bg-white border border-violet-200 p-5">
     <div className="flex items-start justify-between gap-3 flex-wrap">
       <h3 className="font-semibold text-slate-800 text-base leading-tight">{project.title}</h3>
       {project.links?.length > 0 && (
@@ -163,35 +147,11 @@ const ProjectSection = ({ items, moreItems }) => {
   );
 };
 
-const ArticleSection = ({ items }) => (
-  <div className="space-y-3">
-    {items.map((article, i) => (
-      <a key={i} href={article.url} target="_blank" rel="noreferrer noopener"
-        className="group block rounded-2xl bg-white border border-violet-200 p-5">
-        <div className="flex items-start justify-between gap-2">
-          <h3 className="font-semibold text-slate-800 text-sm leading-snug">
-            {article.title}
-          </h3>
-          <ArrowIcon />
-        </div>
-        {article.summary && (
-          <p className="mt-2 text-sm text-slate-500 leading-relaxed">{article.summary}</p>
-        )}
-        {article.tags?.length > 0 && (
-          <div className="mt-3 flex flex-wrap gap-1.5">
-            {article.tags.map((tag, j) => <Tag key={j}>{tag}</Tag>)}
-          </div>
-        )}
-      </a>
-    ))}
-  </div>
-);
-
 const CertificationSection = ({ items }) => (
   <div className="space-y-3">
     {items.map((cert, i) => (
       <a key={i} href={cert.credentialUrl} target="_blank" rel="noreferrer noopener"
-        className="block rounded-2xl bg-white border border-violet-200 p-5">
+        className="block rounded-lg bg-white border border-violet-200 p-5">
         <div className="flex items-start justify-between gap-2">
           <div>
             <h3 className="font-semibold text-slate-800 text-sm leading-snug">{cert.name}</h3>
@@ -212,13 +172,9 @@ const CertificationSection = ({ items }) => (
 const EducationSection = ({ items }) => (
   <div className="space-y-3">
     {items.map((entry, i) => (
-      <div key={i} className="rounded-2xl bg-white border border-violet-200 p-5">
+      <div key={i} className="rounded-lg bg-white border border-violet-200 p-5">
         <h3 className="font-semibold text-slate-800 text-sm leading-tight">{entry.degree}</h3>
         <p className="mt-1 text-sm text-slate-500">{entry.institution}</p>
-        <div className="mt-2 flex flex-wrap gap-3 text-xs text-slate-400">
-          {entry.period && <span>{entry.period}</span>}
-          {entry.gpa && <span className="text-violet-500 font-medium">{entry.gpa}</span>}
-        </div>
       </div>
     ))}
   </div>
@@ -226,10 +182,8 @@ const EducationSection = ({ items }) => (
 
 function renderSection(section) {
   switch (section.type) {
-    case "text":          return <TextSection content={section.content} />;
     case "techstack":     return <TechStackSection categories={section.categories} />;
     case "project":       return <ProjectSection items={section.items} moreItems={section.moreItems} />;
-    case "article":       return <ArticleSection items={section.items} />;
     case "certification": return <CertificationSection items={section.items} />;
     case "education":     return <EducationSection items={section.items} />;
     default:              return null;
@@ -252,7 +206,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-600">
-      {/* subtle grid bg */}
       <div className="fixed inset-0 -z-10 bg-[linear-gradient(to_right,#e2e8f020_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f020_1px,transparent_1px)] bg-[size:40px_40px]" />
 
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 md:px-12 lg:px-24">
@@ -262,25 +215,22 @@ export default function App() {
           <header className="pt-10 lg:sticky lg:top-0 lg:flex lg:h-screen lg:w-[380px] lg:shrink-0 lg:flex-col lg:justify-between lg:pt-20 lg:pb-20">
             <div>
               <div className="mb-6">
-                <h1 className="text-xl font-bold text-slate-900 leading-tight">
-                    {metadata.name}
-                </h1>
+                <h1 className="text-xl font-bold text-slate-900 leading-tight">{metadata.name}</h1>
                 <p className="text-sm text-violet-600 font-medium mt-0.5">{metadata.title}</p>
               </div>
 
               <p className="text-sm text-slate-500 leading-relaxed mb-8 max-w-xs">{metadata.tagline}</p>
 
-              {/* Contact pills */}
               <div className="space-y-2 mb-10">
                 {metadata.email && (
                   <div className="flex items-center gap-2">
                     <a href={`mailto:${metadata.email}`}
-                      className="flex-1 min-w-0 text-sm text-slate-700 bg-white border border-violet-200 rounded-xl px-3 py-2 truncate">
+                      className="flex-1 min-w-0 text-sm text-slate-700 bg-white border border-violet-200 rounded-md px-3 py-2 truncate">
                       {metadata.email}
                     </a>
                     <button onClick={copyEmail}
-                      className="shrink-0 text-xs font-medium px-3 py-2 rounded-xl bg-white border border-violet-200 text-slate-500"
-                      aria-label={`Copy email`}>
+                      className="shrink-0 text-xs font-medium px-3 py-2 rounded-md bg-white border border-violet-200 text-slate-500"
+                      aria-label="Copy email">
                       {emailCopied ? "✓" : "Copy"}
                     </button>
                   </div>
@@ -288,25 +238,24 @@ export default function App() {
                 {metadata.phone && (
                   <div className="flex items-center gap-2">
                     <a href={`tel:${metadata.phone.replace(/\s+/g, "")}`}
-                      className="flex-1 min-w-0 text-sm text-slate-700 bg-white border border-violet-200 rounded-xl px-3 py-2 truncate">
+                      className="flex-1 min-w-0 text-sm text-slate-700 bg-white border border-violet-200 rounded-md px-3 py-2 truncate">
                       {metadata.phone}
                     </a>
                     <button onClick={copyPhone}
-                      className="shrink-0 text-xs font-medium px-3 py-2 rounded-xl bg-white border border-violet-200 text-slate-500"
-                      aria-label={`Copy phone`}>
+                      className="shrink-0 text-xs font-medium px-3 py-2 rounded-md bg-white border border-violet-200 text-slate-500"
+                      aria-label="Copy phone">
                       {phoneCopied ? "✓" : "Copy"}
                     </button>
                   </div>
                 )}
               </div>
 
-              {/* Nav */}
               <nav className="hidden lg:block" aria-label="In-page jump links">
                 <ul className="space-y-1">
                   {sections.map((s) => (
                     <li key={s.id}>
                       <a href={`#${s.id}`} onClick={(e) => scrollTo(e, s.id)}
-                        className={`flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium border ${
+                        className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium border ${
                           active === s.id
                             ? "bg-violet-50 text-violet-700 border-violet-200"
                             : "border-violet-200 text-slate-400"
@@ -320,14 +269,13 @@ export default function App() {
               </nav>
             </div>
 
-            {/* Social links */}
             <div className="mt-8">
               <ul className="flex flex-wrap gap-2" aria-label="Social media">
                 {SOCIAL.map(({ key, label, icon }) =>
                   metadata.social[key] ? (
                     <li key={key}>
                       <a href={metadata.social[key]} target="_blank" rel="noreferrer noopener"
-                        className="flex items-center justify-center w-9 h-9 rounded-xl bg-violet-600 text-white"
+                        className="flex items-center justify-center w-9 h-9 rounded-md bg-violet-600 text-white"
                         aria-label={`${label} (opens in a new tab)`} title={label}>
                         <span className="sr-only">{label}</span>
                         {icon}
@@ -338,7 +286,7 @@ export default function App() {
                 <li>
                   <a href="https://docs.google.com/document/d/1Is5jUhyEGggU1dsqlMcQj3Q3tldcAdldZ-xW4WpTKDk/edit?usp=sharing"
                     target="_blank" rel="noreferrer noopener"
-                    className="flex items-center justify-center w-9 h-9 rounded-xl bg-violet-600 text-white"
+                    className="flex items-center justify-center w-9 h-9 rounded-md bg-violet-600 text-white"
                     aria-label="Resume (opens in a new tab)" title="Resume">
                     <span className="sr-only">Resume</span>
                     <ResumeIcon />
@@ -356,12 +304,10 @@ export default function App() {
                 {renderSection(section)}
               </section>
             ))}
-            <div className="mt-[900px]"></div>
             <footer className="pt-8 border-t border-slate-100">
               <p className="text-xs text-slate-400">
                 Design inspired by{" "}
-                <a href="https://brittanychiang.com" target="_blank" rel="noreferrer noopener"
-                  className="text-slate-500">
+                <a href="https://brittanychiang.com" target="_blank" rel="noreferrer noopener" className="text-slate-500">
                   Brittany Chiang
                 </a>.
               </p>
