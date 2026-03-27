@@ -109,8 +109,8 @@ const TextSection = ({ content }) => (
 const TechStackSection = ({ categories }) => (
   <div className="grid gap-3">
     {categories.map((cat, i) => (
-      <div key={i} className="rounded-xl bg-white border border-slate-100 shadow-sm px-4 py-3 flex flex-wrap gap-x-3 gap-y-1 items-baseline">
-        <span className="text-xs font-bold uppercase tracking-wider text-violet-500 shrink-0 w-32">{cat.label}</span>
+      <div key={i} className="rounded-xl bg-white border border-violet-200 px-4 py-3 flex flex-col gap-1">
+        <span className="text-xs font-bold uppercase tracking-wider text-violet-500">{cat.label}</span>
         <span className="text-sm text-slate-600">{cat.skills.join(" · ")}</span>
       </div>
     ))}
@@ -118,7 +118,7 @@ const TechStackSection = ({ categories }) => (
 );
 
 const ProjectItem = ({ project }) => (
-  <div className="group rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md hover:border-violet-200 transition-all duration-200 p-5">
+  <div className="rounded-2xl bg-white border border-violet-200 p-5">
     <div className="flex items-start justify-between gap-3 flex-wrap">
       <h3 className="font-semibold text-slate-800 text-base leading-tight">{project.title}</h3>
       {project.links?.length > 0 && (
@@ -126,7 +126,7 @@ const ProjectItem = ({ project }) => (
           {project.links.map((link, i) => (
             <a key={i} href={link.url} target="_blank" rel="noreferrer noopener"
               aria-label={`${link.label} for ${project.title}`}
-              className="inline-flex items-center gap-1 text-xs font-medium text-violet-600 bg-violet-50 border border-violet-200 rounded-full px-3 py-1 hover:bg-violet-100 transition-colors">
+              className="inline-flex items-center gap-1 text-xs font-medium text-violet-600 bg-violet-50 border border-violet-200 rounded-full px-3 py-1">
               {link.label}<ArrowIcon />
             </a>
           ))}
@@ -147,7 +147,7 @@ const ProjectSection = ({ items, moreItems }) => {
       {moreItems?.length > 0 && (
         <>
           <button onClick={() => setOpen((v) => !v)}
-            className="flex items-center gap-2 text-sm font-medium text-violet-600 hover:text-violet-800 transition-colors"
+            className="flex items-center gap-2 text-sm font-medium text-violet-600"
             aria-expanded={open}>
             <span className={`inline-block transition-transform duration-200 ${open ? "rotate-90" : ""}`}>›</span>
             {open ? "Show less" : `${moreItems.length} more projects`}
@@ -167,9 +167,9 @@ const ArticleSection = ({ items }) => (
   <div className="space-y-3">
     {items.map((article, i) => (
       <a key={i} href={article.url} target="_blank" rel="noreferrer noopener"
-        className="group block rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md hover:border-violet-200 transition-all duration-200 p-5">
+        className="group block rounded-2xl bg-white border border-violet-200 p-5">
         <div className="flex items-start justify-between gap-2">
-          <h3 className="font-semibold text-slate-800 text-sm leading-snug group-hover:text-violet-700 transition-colors">
+          <h3 className="font-semibold text-slate-800 text-sm leading-snug">
             {article.title}
           </h3>
           <ArrowIcon />
@@ -191,10 +191,10 @@ const CertificationSection = ({ items }) => (
   <div className="space-y-3">
     {items.map((cert, i) => (
       <a key={i} href={cert.credentialUrl} target="_blank" rel="noreferrer noopener"
-        className="group block rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md hover:border-violet-200 transition-all duration-200 p-5">
+        className="block rounded-2xl bg-white border border-violet-200 p-5">
         <div className="flex items-start justify-between gap-2">
           <div>
-            <h3 className="font-semibold text-slate-800 text-sm leading-snug group-hover:text-violet-700 transition-colors">{cert.name}</h3>
+            <h3 className="font-semibold text-slate-800 text-sm leading-snug">{cert.name}</h3>
             {cert.issuer && <p className="mt-0.5 text-xs text-slate-400">{cert.issuer}</p>}
           </div>
           <ArrowIcon />
@@ -212,7 +212,7 @@ const CertificationSection = ({ items }) => (
 const EducationSection = ({ items }) => (
   <div className="space-y-3">
     {items.map((entry, i) => (
-      <div key={i} className="rounded-2xl bg-white border border-slate-100 shadow-sm p-5">
+      <div key={i} className="rounded-2xl bg-white border border-violet-200 p-5">
         <h3 className="font-semibold text-slate-800 text-sm leading-tight">{entry.degree}</h3>
         <p className="mt-1 text-sm text-slate-500">{entry.institution}</p>
         <div className="mt-2 flex flex-wrap gap-3 text-xs text-slate-400">
@@ -261,17 +261,11 @@ export default function App() {
           {/* ── Sidebar ── */}
           <header className="pt-10 lg:sticky lg:top-0 lg:flex lg:h-screen lg:w-[380px] lg:shrink-0 lg:flex-col lg:justify-between lg:pt-20 lg:pb-20">
             <div>
-              {/* Avatar placeholder + name */}
-              <div className="flex items-center gap-4 mb-6">
-                <div className="h-14 w-14 rounded-2xl overflow-hidden shadow-lg shadow-violet-200 shrink-0 border border-slate-200">
-                  <img src="/me/ME.JPG" alt={metadata.name} className="h-full w-full object-cover" />
-                </div>
-                <div>
-                  <h1 className="text-xl font-bold text-slate-900 leading-tight">
-                      {metadata.name}
-                  </h1>
-                  <p className="text-sm text-violet-600 font-medium mt-0.5">{metadata.title}</p>
-                </div>
+              <div className="mb-6">
+                <h1 className="text-xl font-bold text-slate-900 leading-tight">
+                    {metadata.name}
+                </h1>
+                <p className="text-sm text-violet-600 font-medium mt-0.5">{metadata.title}</p>
               </div>
 
               <p className="text-sm text-slate-500 leading-relaxed mb-8 max-w-xs">{metadata.tagline}</p>
@@ -281,11 +275,11 @@ export default function App() {
                 {metadata.email && (
                   <div className="flex items-center gap-2">
                     <a href={`mailto:${metadata.email}`}
-                      className="flex-1 min-w-0 text-sm text-slate-700 bg-white border border-slate-200 rounded-xl px-3 py-2 truncate hover:border-violet-300 hover:text-violet-700 transition-colors shadow-sm">
+                      className="flex-1 min-w-0 text-sm text-slate-700 bg-white border border-violet-200 rounded-xl px-3 py-2 truncate">
                       {metadata.email}
                     </a>
                     <button onClick={copyEmail}
-                      className="shrink-0 text-xs font-medium px-3 py-2 rounded-xl bg-white border border-slate-200 text-slate-500 hover:border-violet-300 hover:text-violet-600 transition-colors shadow-sm"
+                      className="shrink-0 text-xs font-medium px-3 py-2 rounded-xl bg-white border border-violet-200 text-slate-500"
                       aria-label={`Copy email`}>
                       {emailCopied ? "✓" : "Copy"}
                     </button>
@@ -294,11 +288,11 @@ export default function App() {
                 {metadata.phone && (
                   <div className="flex items-center gap-2">
                     <a href={`tel:${metadata.phone.replace(/\s+/g, "")}`}
-                      className="flex-1 min-w-0 text-sm text-slate-700 bg-white border border-slate-200 rounded-xl px-3 py-2 truncate hover:border-violet-300 hover:text-violet-700 transition-colors shadow-sm">
+                      className="flex-1 min-w-0 text-sm text-slate-700 bg-white border border-violet-200 rounded-xl px-3 py-2 truncate">
                       {metadata.phone}
                     </a>
                     <button onClick={copyPhone}
-                      className="shrink-0 text-xs font-medium px-3 py-2 rounded-xl bg-white border border-slate-200 text-slate-500 hover:border-violet-300 hover:text-violet-600 transition-colors shadow-sm"
+                      className="shrink-0 text-xs font-medium px-3 py-2 rounded-xl bg-white border border-violet-200 text-slate-500"
                       aria-label={`Copy phone`}>
                       {phoneCopied ? "✓" : "Copy"}
                     </button>
@@ -312,10 +306,10 @@ export default function App() {
                   {sections.map((s) => (
                     <li key={s.id}>
                       <a href={`#${s.id}`} onClick={(e) => scrollTo(e, s.id)}
-                        className={`flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium transition-all duration-200 border ${
+                        className={`flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium border ${
                           active === s.id
                             ? "bg-violet-50 text-violet-700 border-violet-200"
-                            : "border-slate-200 text-slate-400 hover:text-slate-700 hover:bg-white"
+                            : "border-violet-200 text-slate-400"
                         }`}>
                         <span className={`h-1.5 w-1.5 rounded-full shrink-0 transition-colors ${active === s.id ? "bg-violet-500" : "bg-slate-300"}`} />
                         {s.title}
@@ -333,7 +327,7 @@ export default function App() {
                   metadata.social[key] ? (
                     <li key={key}>
                       <a href={metadata.social[key]} target="_blank" rel="noreferrer noopener"
-                        className="flex items-center justify-center w-9 h-9 rounded-xl bg-violet-600 text-white transition-opacity hover:opacity-80 shadow-sm"
+                        className="flex items-center justify-center w-9 h-9 rounded-xl bg-violet-600 text-white"
                         aria-label={`${label} (opens in a new tab)`} title={label}>
                         <span className="sr-only">{label}</span>
                         {icon}
@@ -344,7 +338,7 @@ export default function App() {
                 <li>
                   <a href="https://docs.google.com/document/d/1Is5jUhyEGggU1dsqlMcQj3Q3tldcAdldZ-xW4WpTKDk/edit?usp=sharing"
                     target="_blank" rel="noreferrer noopener"
-                    className="flex items-center justify-center w-9 h-9 rounded-xl bg-violet-600 text-white transition-opacity hover:opacity-80 shadow-sm"
+                    className="flex items-center justify-center w-9 h-9 rounded-xl bg-violet-600 text-white"
                     aria-label="Resume (opens in a new tab)" title="Resume">
                     <span className="sr-only">Resume</span>
                     <ResumeIcon />
@@ -367,7 +361,7 @@ export default function App() {
               <p className="text-xs text-slate-400">
                 Design inspired by{" "}
                 <a href="https://brittanychiang.com" target="_blank" rel="noreferrer noopener"
-                  className="text-slate-500 hover:text-violet-600 transition-colors">
+                  className="text-slate-500">
                   Brittany Chiang
                 </a>.
               </p>
