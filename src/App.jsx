@@ -20,7 +20,11 @@ function useCopy(text) {
 
 function useActiveSection(ids) {
   const [active, setActive] = useState("");
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
+    setMounted(true);
+    if (typeof IntersectionObserver === "undefined") return;
     const els = ids.map((id) => document.getElementById(id)).filter(Boolean);
     const visible = new Map();
     const observer = new IntersectionObserver(
@@ -41,7 +45,7 @@ function useActiveSection(ids) {
     els.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, [ids]);
-  return active;
+  return mounted ? active : "";
 }
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
@@ -205,7 +209,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-600">
+    <div className="min-h-screen bg-slate-50 text-slate-600" suppressHydrationWarning>
       <div className="fixed inset-0 -z-10 bg-[linear-gradient(to_right,#e2e8f020_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f020_1px,transparent_1px)] bg-[size:40px_40px]" />
 
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 md:px-12 lg:px-24">
@@ -304,6 +308,7 @@ export default function App() {
                 {renderSection(section)}
               </section>
             ))}
+            <div className="h-[1000px]" />
             <footer className="pt-8 border-t border-slate-100">
               <p className="text-xs text-slate-400">
                 Design inspired by{" "}
