@@ -2,6 +2,8 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { portfolio } from "./data/portfolio";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin, faXTwitter } from "@fortawesome/free-brands-svg-icons";
+import { config } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false;
 
 // ─── Hooks ───────────────────────────────────────────────────────────────────
 
@@ -159,7 +161,7 @@ const CertificationSection = ({ items }) => (
         <div className="flex items-start justify-between gap-2">
           <div>
             <h3 className="font-semibold text-slate-800 text-sm leading-snug">{cert.name}</h3>
-            {cert.issuer && <p className="mt-0.5 text-xs text-slate-400">{cert.issuer}</p>}
+            {cert.issuer && <p className="mt-0.5 text-xs text-slate-500">{cert.issuer}</p>}
           </div>
           <ArrowIcon />
         </div>
@@ -262,7 +264,7 @@ export default function App() {
                         className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium border ${
                           active === s.id
                             ? "bg-violet-50 text-violet-700 border-violet-200"
-                            : "border-violet-200 text-slate-400"
+                            : "border-violet-200 text-slate-500"
                         }`}>
                         <span className={`h-1.5 w-1.5 rounded-full shrink-0 transition-colors ${active === s.id ? "bg-violet-500" : "bg-slate-300"}`} />
                         {s.title}
@@ -310,9 +312,9 @@ export default function App() {
             ))}
             <div className="h-[1000px]" />
             <footer className="pt-8 border-t border-slate-100">
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-500">
                 Design inspired by{" "}
-                <a href="https://brittanychiang.com" target="_blank" rel="noreferrer noopener" className="text-slate-500">
+                <a href="https://brittanychiang.com" target="_blank" rel="noreferrer noopener" className="text-slate-500 underline">
                   Brittany Chiang
                 </a>.
               </p>
