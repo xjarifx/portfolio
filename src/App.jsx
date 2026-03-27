@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { portfolio } from "./data/portfolio";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faGithub, faLinkedin, faXTwitter, faInstagram, faMedium,
+  faGithub, faLinkedin, faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 
 // ─── Hooks ───────────────────────────────────────────────────────────────────
@@ -69,11 +69,8 @@ const ResumeIcon = () => (
 const SOCIAL = [
   { key: "github",    label: "GitHub",    icon: <FontAwesomeIcon icon={faGithub} className="h-5 w-5" /> },
   { key: "linkedin",  label: "LinkedIn",  icon: <FontAwesomeIcon icon={faLinkedin} className="h-5 w-5" /> },
-  { key: "leetcode",  label: "LeetCode",  icon: <LeetcodeIcon /> },
-  { key: "medium",    label: "Medium",    icon: <FontAwesomeIcon icon={faMedium} className="h-5 w-5" /> },
-  { key: "fiverr",    label: "Fiverr",    icon: <FiverrIcon /> },
   { key: "x",         label: "X",         icon: <FontAwesomeIcon icon={faXTwitter} className="h-5 w-5" /> },
-  { key: "instagram", label: "Instagram", icon: <FontAwesomeIcon icon={faInstagram} className="h-5 w-5" /> },
+  { key: "leetcode",  label: "LeetCode",  icon: <LeetcodeIcon /> },
 ];
 
 // ─── Small UI pieces ─────────────────────────────────────────────────────────
@@ -271,9 +268,7 @@ export default function App() {
                 </div>
                 <div>
                   <h1 className="text-xl font-bold text-slate-900 leading-tight">
-                    <a href="#summary" onClick={(e) => scrollTo(e, "summary")} className="hover:text-violet-600 transition-colors">
                       {metadata.name}
-                    </a>
                   </h1>
                   <p className="text-sm text-violet-600 font-medium mt-0.5">{metadata.title}</p>
                 </div>
