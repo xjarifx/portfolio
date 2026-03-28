@@ -48,28 +48,8 @@ export const portfolio = {
           description:
             "A complete social network with authentication, posts, comments, likes, follows, notifications, and user blocking functionality.",
           links: [
-            { label: "GitHub", url: "https://github.com/xjarifx/social-network" },
-            { label: "Live Preview", url: "https://social-network-ten-ruby.vercel.app/" },
-          ],
-        },
-      ],
-      moreItems: [
-        {
-          title: "Ecommerce (Frontend)",
-          description:
-            "A fully-featured Amazon-like ecommerce platform frontend with product browsing, filtering, search, cart management, and secure checkout experience.",
-          links: [
-            { label: "GitHub", url: "https://github.com/xjarifx/Ecommerce-Frontend" },
-            { label: "Live Preview", url: "https://ecommerce-frontend-seven-snowy.vercel.app/" },
-          ],
-        },
-        {
-          title: "Slack (Frontend)",
-          description:
-            "A modern, modular Next.js landing page inspired by Slack, built with TypeScript, Tailwind CSS, and reusable components.",
-          links: [
-            { label: "GitHub", url: "https://github.com/xjarifx/slack-landing-page" },
-            { label: "Live Preview", url: "https://slack-landing-page-two.vercel.app/" },
+            { label: "Live Demo", url: "https://social-network-ten-ruby.vercel.app/" },
+            { label: "Source Code", url: "https://github.com/xjarifx/social-network" },
           ],
         },
         {
@@ -77,26 +57,8 @@ export const portfolio = {
           description:
             "A responsive analytics dashboard with data visualization, real-time metrics, and interactive charts.",
           links: [
-            { label: "GitHub", url: "https://github.com/xjarifx/Dashboard-Frontend" },
-            { label: "Live Preview", url: "https://dashboard-frontend-sigma-inky.vercel.app/dashboard" },
-          ],
-        },
-        {
-          title: "Flower Shop (Frontend)",
-          description:
-            "A modern, responsive flower shop frontend with product showcases, category filtering, cart preview, and smooth mobile-first UI.",
-          links: [
-            { label: "GitHub", url: "https://github.com/xjarifx/flower-shop" },
-            { label: "Live Preview", url: "https://flower-shop-mauve-tau.vercel.app/" },
-          ],
-        },
-        {
-          title: "Game Shop (Frontend)",
-          description:
-            "A parallax website inspired by the Firewatch game landing page, focused on layered scrolling visuals and immersive storytelling.",
-          links: [
-            { label: "GitHub", url: "https://github.com/xjarifx/parallax" },
-            { label: "Live Preview", url: "https://parallax-nine-gilt.vercel.app/" },
+            { label: "Live Demo", url: "https://dashboard-frontend-sigma-inky.vercel.app/dashboard" },
+            { label: "Source Code", url: "https://github.com/xjarifx/Dashboard-Frontend" },
           ],
         },
       ],
