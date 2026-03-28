@@ -6,7 +6,7 @@ import App from './App.jsx'
 const root = document.getElementById('root')
 const app = <BrowserRouter><App /></BrowserRouter>
 
-if (root.hasChildNodes()) {
+if (root.firstElementChild) {
   hydrateRoot(root, app)
 } else {
   createRoot(root).render(app)

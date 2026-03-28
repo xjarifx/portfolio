@@ -29,11 +29,11 @@ export const portfolio = {
       type: "techstack",
       title: "Tech Stack",
       categories: [
-        { label: "Frontend", skills: ["React", "Next.js", "Tailwind CSS", "Radix UI", "Vite"] },
-        { label: "Backend", skills: ["Node.js", "Express", "REST APIs", "JWT", "Zod"] },
-        { label: "Database", skills: ["PostgreSQL", "MongoDB", "Prisma", "Redis"] },
-        { label: "Tools / Cloud", skills: ["AWS", "Docker", "Git", "Vercel", "Render", "Postman"] },
-        { label: "Languages", skills: ["TypeScript", "JavaScript (ES6+)", "SQL"] },
+        { label: "Frontend", skills: ["React", "Tailwind CSS"] },
+        { label: "Backend", skills: ["Node.js", "Express"] },
+        { label: "Database", skills: ["PostgreSQL", "MongoDB", "Redis"] },
+        { label: "Tools / Cloud", skills: ["Docker", "Git"] },
+        { label: "Languages", skills: ["TypeScript"] },
       ],
     },
 
