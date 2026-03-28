@@ -172,10 +172,10 @@ export default function DesignK() {
           font-size: 14px;
           color: #fff;
           text-decoration: none;
-          padding: 4px 0;
-          display: inline-block;
-          width: fit-content;
-          border-bottom: 1px solid #2563eb;
+          padding: 6px 0;
+          display: block;
+          width: 100%;
+          border-bottom: 1px solid transparent;
           transition: border-color .2s, transform .2s;
         }
         .k-nav a:hover {
@@ -189,11 +189,13 @@ export default function DesignK() {
         }
 
         /* Contact */
-        .k-contact { display: flex; flex-direction: column; gap: 6px; }
+        .k-contact { display: flex; flex-direction: column; gap: 4px; }
         .k-contact-item {
           display: flex;
           align-items: center;
-          gap: 10px;
+          gap: 8px;
+          width: 100%;
+          padding: 6px 0;
         }
         .k-contact-item a {
           font-size: 14px;
@@ -201,8 +203,9 @@ export default function DesignK() {
           text-decoration: none;
           border-bottom: 1px solid transparent;
           transition: color .2s, border-color .2s;
+          flex: 1;
         }
-        .k-contact-item a:hover { color: #fff; border-color: #2563eb; }
+        .k-contact-item a:hover { color: #fff; border-color: #fff; }
         .k-contact-item a:focus-visible {
           outline: 2px solid #2563eb;
           outline-offset: 2px;
@@ -210,27 +213,30 @@ export default function DesignK() {
         }
 
         .k-copy-btn {
-          font-size: 12px;
-          color: #999;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #555;
           background: none;
-          border: 1px solid #333;
-          padding: 2px 8px;
+          border: none;
+          padding: 4px;
           border-radius: 4px;
           cursor: pointer;
-          font-family: 'JetBrains Mono', monospace;
-          min-height: 28px;
-          min-width: 52px;
-          transition: color .15s, border-color .15s;
+          flex-shrink: 0;
+          transition: color .15s;
         }
         .k-copy-btn:hover {
           color: #fff;
-          border-color: #999;
         }
         .k-copy-btn:focus-visible {
           outline: 2px solid #2563eb;
           outline-offset: 2px;
         }
-        .k-copy-btn.copied { color: #2563eb; border-color: #2563eb; }
+        .k-copy-btn.copied { color: #2563eb; }
+        .k-copy-btn svg {
+          width: 14px;
+          height: 14px;
+        }
 
         /* ── Main ──────────────────────────── */
         .k-main { min-width: 0; }
@@ -278,6 +284,11 @@ export default function DesignK() {
           outline: 2px solid #2563eb;
           outline-offset: 2px;
           border-radius: 2px;
+        }
+        @media (max-width: 767px) {
+          .k-tab-btn {
+            padding: 10px 0;
+          }
         }
 
         /* Panel crossfade */
@@ -418,18 +429,24 @@ export default function DesignK() {
           {/* Contact */}
           <div className="k-contact k-slide" style={{ "--d": "350ms" }} aria-label="Contact information">
             <div className="k-contact-item">
-              <a href={`mailto:${metadata.email}`} aria-label={`Email ${metadata.email}`}>{metadata.email}</a>
               <button onClick={copyEmail} className={`k-copy-btn ${emailCopied ? "copied" : ""}`}
                 aria-label="Copy email address" type="button">
-                {emailCopied ? "copied" : "copy"}
+                {emailCopied
+                  ? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  : <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                }
               </button>
+              <a href={`mailto:${metadata.email}`} aria-label={`Email ${metadata.email}`}>{metadata.email}</a>
             </div>
             <div className="k-contact-item">
-              <a href={`tel:${metadata.phone.replace(/\s+/g, "")}`} aria-label={`Phone ${metadata.phone}`}>{metadata.phone}</a>
               <button onClick={copyPhone} className={`k-copy-btn ${phoneCopied ? "copied" : ""}`}
                 aria-label="Copy phone number" type="button">
-                {phoneCopied ? "copied" : "copy"}
+                {phoneCopied
+                  ? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  : <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                }
               </button>
+              <a href={`tel:${metadata.phone.replace(/\s+/g, "")}`} aria-label={`Phone ${metadata.phone}`}>{metadata.phone}</a>
             </div>
           </div>
         </aside>
