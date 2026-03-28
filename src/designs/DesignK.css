@@ -79,15 +79,15 @@
 .k-nav { display: flex; flex-direction: row; flex-wrap: wrap; gap: 16px; }
 .k-nav a {
   font-size: 14px;
-  color: #777;
+  color: #999;
   text-decoration: none;
   padding: 4px 0;
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid #2563eb;
   transition: color .2s, border-color .2s, transform .2s;
 }
 .k-nav a:hover {
   color: #fff;
-  border-color: #333;
+  border-color: #fff;
   transform: translateY(-2px);
 }
 .k-nav a:focus-visible {
@@ -106,12 +106,12 @@
 }
 .k-contact-item a {
   font-size: 14px;
-  color: #666;
+  color: #999;
   text-decoration: none;
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid #2563eb;
   transition: color .2s, border-color .2s;
 }
-.k-contact-item a:hover { color: #fff; border-color: #333; }
+.k-contact-item a:hover { color: #fff; border-color: #fff; }
 .k-contact-item a:focus-visible {
   outline: 2px solid #2563eb;
   outline-offset: 2px;

@@ -29,11 +29,39 @@ export const portfolio = {
       type: "techstack",
       title: "Tech Stack",
       categories: [
-        { label: "Frontend", skills: ["React", "Tailwind CSS"] },
-        { label: "Backend", skills: ["Node.js", "Express"] },
-        { label: "Database", skills: ["PostgreSQL", "MongoDB", "Redis"] },
-        { label: "Tools / Cloud", skills: ["Docker", "Git"] },
-        { label: "Languages", skills: ["TypeScript"] },
+        {
+          label: "Languages",
+          skills: ["JavaScript (ES6+)", "TypeScript"],
+        },
+        {
+          label: "Frontend",
+          skills: ["Next.js", "React", "Shadcn/ui", "Tailwind CSS"],
+        },
+        {
+          label: "Backend",
+          skills: [
+            "Express.js",
+            "Node.js",
+            "REST APIs",
+            "Socket.io",
+            "WebSockets",
+          ],
+        },
+        {
+          label: "Database",
+          skills: ["MongoDB", "Mongoose", "PostgreSQL", "Prisma ORM", "Redis"],
+        },
+        {
+          label: "DevOps & Tools",
+          skills: [
+            "AWS",
+            "Docker",
+            "Git",
+            "GitHub Actions",
+            "Render",
+            "Vercel",
+          ],
+        },
       ],
     },
 
@@ -48,8 +76,14 @@ export const portfolio = {
           description:
             "A complete social network with authentication, posts, comments, likes, follows, notifications, and user blocking functionality.",
           links: [
-            { label: "Live Demo", url: "https://social-network-ten-ruby.vercel.app/" },
-            { label: "Source Code", url: "https://github.com/xjarifx/social-network" },
+            {
+              label: "Live Demo",
+              url: "https://social-network-ten-ruby.vercel.app/",
+            },
+            {
+              label: "Source Code",
+              url: "https://github.com/xjarifx/social-network",
+            },
           ],
         },
         {
@@ -57,8 +91,14 @@ export const portfolio = {
           description:
             "A responsive analytics dashboard with data visualization, real-time metrics, and interactive charts.",
           links: [
-            { label: "Live Demo", url: "https://dashboard-frontend-sigma-inky.vercel.app/dashboard" },
-            { label: "Source Code", url: "https://github.com/xjarifx/Dashboard-Frontend" },
+            {
+              label: "Live Demo",
+              url: "https://dashboard-frontend-sigma-inky.vercel.app/dashboard",
+            },
+            {
+              label: "Source Code",
+              url: "https://github.com/xjarifx/Dashboard-Frontend",
+            },
           ],
         },
       ],

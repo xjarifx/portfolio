@@ -52,7 +52,7 @@ const cert        = sections.find(s => s.type === "certification");
 const edu         = sections.find(s => s.type === "education");
 const allProjects = projects?.items || [];
 
-const socialLabels = { github: "GitHub", linkedin: "LinkedIn", x: "X", leetcode: "LeetCode" };
+const socialLabels = { github: "GitHub", linkedin: "LinkedIn", x: "X / Twitter", leetcode: "LeetCode" };
 
 /* ── Component ─────────────────────────────────────────── */
 
