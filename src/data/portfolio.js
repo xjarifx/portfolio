@@ -4,7 +4,7 @@ export const portfolio = {
   // ============================================================
   metadata: {
     name: "Md. Junaidul Islam Jarif",
-    title: "Full-Stack Engineer",
+    title: "Backend Developer",
     tagline:
       "I build responsive web experiences and scalable backend systems end-to-end.",
     email: "xjarifx@gmail.com",
@@ -87,17 +87,17 @@ export const portfolio = {
           ],
         },
         {
-          title: "Dashboard (Frontend)",
+          title: "Guess The Output (Frontend)",
           description:
-            "A responsive analytics dashboard with data visualization, real-time metrics, and interactive charts.",
+            "An interactive quiz testing knowledge of JavaScript quirks and weird output, featuring a mobile-responsive neo-brutalist design.",
           links: [
             {
               label: "Live Demo",
-              url: "https://dashboard-frontend-sigma-inky.vercel.app/dashboard",
+              url: "https://guess-the-output-lilac.vercel.app",
             },
             {
               label: "Source Code",
-              url: "https://github.com/xjarifx/Dashboard-Frontend",
+              url: "https://github.com/xjarifx/Guess-The-Output",
             },
           ],
         },
