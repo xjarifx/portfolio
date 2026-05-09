@@ -28,7 +28,7 @@ export default function Home() {
           {toast}
         </div>
       )}
-      <main className="flex-1 max-w-[1100px] mx-auto px-6 py-10 pb-20 w-full flex flex-col gap-16">
+      <main className="flex-1 max-w-[1400px] mx-auto px-6 py-10 pb-20 w-full flex flex-col gap-16">
         <section>
           <h1 className="text-3xl sm:text-5xl font-black tracking-tighter text-black leading-none mb-1">
             {metadata.name}
@@ -36,7 +36,7 @@ export default function Home() {
           <p className="text-xl font-bold text-pink-500 uppercase mb-3">
             {metadata.title}
           </p>
-          <p className="text-[15px] text-[#525252] max-w-[500px] leading-relaxed mb-5">
+          <p className="text-[15px] text-[#525252] leading-relaxed mb-5">
             {metadata.tagline}
           </p>
           <div className="flex gap-2 flex-wrap mb-6">
