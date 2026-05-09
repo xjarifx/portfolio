@@ -68,12 +68,16 @@ export default function Home() {
           <h2 className="text-3xl font-extrabold uppercase tracking-tighter text-black mb-8 border-b-4 border-rose-500 pb-3">
             Projects
           </h2>
-          <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-5 max-sm:grid-cols-1">
+          <div className="flex flex-col gap-5">
             {allProjects.map((p, i) => (
               <article key={i} className="border-[3px] border-black bg-white shadow-[3px_3px_0_#000]">
                 <div className="p-6">
                   <h3 className="text-base font-bold text-black mb-2">{p.title}</h3>
-                  <p className="text-sm text-[#525252] leading-relaxed mb-4">{p.description}</p>
+                  <ul className="text-sm text-[#525252] leading-relaxed mb-4 list-disc list-inside space-y-1">
+                    {p.description.map((point, j) => (
+                      <li key={j}>{point}</li>
+                    ))}
+                  </ul>
                   <div className="flex gap-2">
                     {p.links?.map((l, j) => (
                       <a key={j} href={l.url} target="_blank" rel="noreferrer noopener"

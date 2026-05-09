@@ -73,8 +73,14 @@ export const portfolio = {
       items: [
         {
           title: "Better Calendar",
-          description:
-            "An AI-powered calendar application built with Next.js 16, TypeScript, and PostgreSQL. Create, manage, and extract events using natural language processing with OpenRouter AI integration.",
+          description: [
+            "AI-powered event extraction from natural language using OpenRouter",
+            "Dual-mode authentication (JWT Bearer tokens + HTTP-only cookies)",
+            "All-day, timed, and multi-day event support",
+            "Calendar views with drag-and-drop via dnd-kit",
+            "Personal OpenRouter API key configuration in settings",
+            "Responsive design with Tailwind CSS and shadcn/ui",
+          ],
           links: [
             {
               label: "Live Demo",
