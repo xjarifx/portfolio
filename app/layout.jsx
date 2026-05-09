@@ -1,5 +1,4 @@
 import { JetBrains_Mono, Inter } from "next/font/google";
-import "../src/designs/DesignK.css";
 import "./globals.css";
 
 const jetbrainsMono = JetBrains_Mono({
@@ -31,7 +30,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${jetbrainsMono.variable} ${inter.variable}`}>
       <head />
-      <body>{children}</body>
+      <body suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }
