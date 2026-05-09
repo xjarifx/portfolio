@@ -72,32 +72,17 @@ export const portfolio = {
       title: "Projects",
       items: [
         {
-          title: "Social Media (Full-Stack)",
+          title: "Better Calendar",
           description:
-            "A complete social network with authentication, posts, comments, likes, follows, notifications, and user blocking functionality.",
+            "An AI-powered calendar application built with Next.js 16, TypeScript, and PostgreSQL. Create, manage, and extract events using natural language processing with OpenRouter AI integration.",
           links: [
             {
               label: "Live Demo",
-              url: "https://social-network-ten-ruby.vercel.app/",
+              url: "https://better-calender-jarif.vercel.app",
             },
             {
               label: "Source Code",
-              url: "https://github.com/xjarifx/social-network",
-            },
-          ],
-        },
-        {
-          title: "Guess The Output (Frontend)",
-          description:
-            "An interactive quiz testing knowledge of JavaScript quirks and weird output, featuring a mobile-responsive neo-brutalist design.",
-          links: [
-            {
-              label: "Live Demo",
-              url: "https://guess-the-output-lilac.vercel.app",
-            },
-            {
-              label: "Source Code",
-              url: "https://github.com/xjarifx/Guess-The-Output",
+              url: "https://github.com/xjarifx/better-calender",
             },
           ],
         },
