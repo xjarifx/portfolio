@@ -31,36 +31,19 @@ export const portfolio = {
       categories: [
         {
           label: "Languages",
-          skills: ["JavaScript (ES6+)", "TypeScript"],
+          skills: ["TypeScript"],
         },
         {
           label: "Frontend",
-          skills: ["Next.js", "React", "Shadcn/ui", "Tailwind CSS"],
+          skills: ["Next.js"],
         },
         {
           label: "Backend",
-          skills: [
-            "Express.js",
-            "Node.js",
-            "REST APIs",
-            "Socket.io",
-            "WebSockets",
-          ],
+          skills: ["Node.js"],
         },
         {
           label: "Database",
-          skills: ["MongoDB", "Mongoose", "PostgreSQL", "Prisma ORM", "Redis"],
-        },
-        {
-          label: "DevOps & Tools",
-          skills: [
-            "AWS",
-            "Docker",
-            "Git",
-            "GitHub Actions",
-            "Render",
-            "Vercel",
-          ],
+          skills: ["PostgreSQL", "MongoDB"],
         },
       ],
     },
