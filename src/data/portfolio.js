@@ -91,6 +91,29 @@ export const portfolio = {
             },
           ],
         },
+        {
+          title: "Better Media",
+          description: [
+            "Full-stack social media platform with Twitter/X-like functionality",
+            "JWT authentication with access/refresh token rotation & revocation",
+            "Post creation with images; public/private visibility; Following & For You feeds",
+            "Threaded comments with nested reply support",
+            "Like/unlike posts & comments with real-time notifications",
+            "Follow/unfollow system with notification generation",
+            "User blocking with feed/content exclusion",
+            "PRO subscriptions via Stripe checkout with expanded features",
+          ],
+          links: [
+            {
+              label: "Live Demo",
+              url: "https://better-media.vercel.app",
+            },
+            {
+              label: "Source Code",
+              url: "https://github.com/xjarifx/better-media",
+            },
+          ],
+        },
       ],
     },
 
