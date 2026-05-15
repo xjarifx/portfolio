@@ -7,7 +7,7 @@ export const portfolio = {
     title: "Software Engineer",
     tagline:
       "I build responsive web experiences and scalable backend systems end-to-end.",
-    email: "xjarifx@gmail.com",
+    email: "office.jarif@gmail.com",
     phone: "+880 1540165110",
     location: "Dhaka, Bangladesh",
 
